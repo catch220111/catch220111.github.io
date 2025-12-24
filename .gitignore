@@ -1,0 +1,20 @@
+# Mac System Files (Very common junk)
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows System Files
+Thumbs.db
+ehthumbs.db
+
+# VS Code Settings (Personal editor preferences shouldn't be shared)
+.vscode/
+
+# Python Cache (If you upload your N-Body scripts)
+__pycache__/
+*.py[cod]
+
+# C++ Build Files (If you upload your Nozzle code)
+*.o
+*.out
+*.exe

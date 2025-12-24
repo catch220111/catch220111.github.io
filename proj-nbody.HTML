@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>N-Body Simulator | Kwanyoung Park</title>
+    <link rel="stylesheet" href="css:/style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <h1>N-Body Simulator: Modeling Galactic Collisions</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Source Code</h2>
+            <p>The full python implementation are available on GitHub.</p>
+            <a href="https://github.com/catch220111/orbit-sim-2025" target="_blank" class="repo-btn">
+                View Repository on GitHub &rarr;
+            </a>
+        </section>
+
+        <section>
+            <h2>Project Overview</h2>
+            <p><strong>Role:</strong> Lead Developer</p>
+            <p><strong>Tools:</strong> Python, NumPy, Matplotlib</p>
+            <p><strong>Objective:</strong> To simulate the gravitational interactions between thousands of stellar bodies to model the dynamics of galactic mergers.</p>
+        </section>
+
+        <section>
+            <h2>The Challenge</h2>
+            <p>
+                Simulating \(N \) particles requires calculating \(N^2 \) gravitational interactions for every time step. 
+                As $N$ increases, the computational cost grows exponentially, making real-time or high-resolution 
+                simulations impossible without significant algorithm optimization.
+            </p>
+        </section>
+
+        <section>
+            <h2>Technical Process</h2>
+            
+            
+            <p>The simulation was built on the fundamental Newtonian law of universal gravitation:</p>
+            $$F = G \frac{m_1 m_2}{r^2}$$
+            
+            <ul>
+                <li><strong>Algorithm Optimization:</strong> Implemented specialized data structures to handle vector calculations more efficiently, resulting in a <strong>15% increase in computation speed</strong> compared to standard iterative methods.</li>
+                <li><strong>Physics Integration:</strong> Developed a custom time-stepping integrator to ensure orbital stability and energy conservation throughout the collision event.</li>
+                <li><strong>Data Visualization:</strong> Utilized Matplotlib to generate visual representations of tidal tails and core mergers, providing a qualitative look at the large-scale structure of the universe.</li>
+            </ul>
+            
+            
+        </section>
+
+        <section>
+            <h2>Engineering Value & Learning</h2>
+            <p>
+                This project bridged the gap between my interest in <strong>Theoretical Cosmology</strong> and 
+                <strong>Software Engineering</strong>. It taught me how to manage 
+                computational resources—a vital skill when dealing with the massive datasets found in modern 
+                astronomical research.
+            </p>
+            <p><strong>Key Takeaway:</strong> Engineering isn't just about finding the answer; it's about building the most efficient path to that answer through constant iteration and optimization.</p>
+        </section>
+    </main>
+
+        <footer>
+            <p>Kwanyoung Park</p>
+            <div class="contact-links">
+                <a href="mailto:park.kwanyoung@icloud.com" class="footer-link">Email</a>
+                <span class="separator">|</span>
+                <a href="https://www.linkedin.com/in/kwanyoung-park-0bb182383" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/catch220111" target="_blank" class="github-link">
+                    GitHub Profile
+                </a>
+            </div>
+            <div class="footer-content">
+                <a href="assets:/pdf:/Kwanyoung_Park_Resume.pdf" download class="download-btn">
+                    Download Full Resume (PDF)
+                </a>
+            </div>
+            <p>&copy; 2025 Kwanyoung Park. All rights reserved.</p>
+        </footer>
+</body>
+</html>
