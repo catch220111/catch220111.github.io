@@ -555,30 +555,30 @@ footer {
 .rocket-launch {
     transform: translateY(-100vh) !important;
     transition: transform 0.8s cubic-bezier(.47, 0, .74, .71) !important;
+}
 
-
-    /* =========================================
+/* =========================================
    15. Education Page Logo Styling (FIXED)
    ========================================= */
-    .edu-item-header {
-        display: flex;
-        flex-direction: row;
-        /* 🟢 Forces horizontal alignment */
-        align-items: center;
-        /* 🟢 Centers logo vertically with title */
-        gap: 15px;
-        margin-bottom: 15px;
-    }
+.edu-item-header {
+    display: flex;
+    flex-direction: row;
+    /* 🟢 Forces horizontal alignment */
+    align-items: center;
+    /* 🟢 Centers logo vertically with title */
+    gap: 15px;
+    margin-bottom: 15px;
+}
 
-    .edu-logo-vector {
-        width: 45px !important;
-        /* 🟢 Small, tiny logo as requested */
-        height: 45px !important;
-        min-width: 45px;
-        /* 🟢 Prevents logo from shrinking or growing */
-        object-fit: contain;
-        flex-shrink: 0;
-        background: #ffffff;
-        border-radius: 4px;
-        padding: 4px;
-    }
+.edu-logo-vector {
+    width: 45px !important;
+    /* 🟢 Small, tiny logo as requested */
+    height: 45px !important;
+    min-width: 45px;
+    /* 🟢 Prevents logo from shrinking or growing */
+    object-fit: contain;
+    flex-shrink: 0;
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 4px;
+}
