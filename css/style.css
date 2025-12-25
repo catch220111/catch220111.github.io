@@ -497,3 +497,37 @@ footer {
     color: var(--text-dim);
     line-height: 1.4;
 }
+
+
+/* =========================================
+   14. Rocket "Scroll to Top" Styles
+   ========================================= */
+#rocket-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+/* Hidden state: slightly lower and invisible */
+.rocket-hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    pointer-events: none;
+}
+
+/* Visible state */
+.rocket-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Launch Animation: Rocket flies up the screen */
+.rocket-launch {
+    transform: translateY(-100vh) !important;
+    transition: transform 0.8s cubic-bezier(.47,0,.74,.71) !important;
+}
