@@ -627,3 +627,48 @@ footer {
 .log-content strong {
     color: #ffffff;
 }
+
+
+/* =========================================
+   17. Contact Form Functionality & Layout
+   ========================================= */
+.contact-card {
+    background: var(--hull-gray);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--slate-gray);
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--nebula-blue);
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: var(--deep-space); /* Deep background for input fields */
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: var(--text-main);
+    font-family: inherit;
+    box-sizing: border-box; /* 泙 CRITICAL: Prevents the width from breaking the card layout */
+}
+
+/* Functional feedback when a user clicks into a field */
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--nebula-blue);
+    box-shadow: 0 0 10px var(--success-glow);
+}
