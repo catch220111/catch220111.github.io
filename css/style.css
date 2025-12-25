@@ -681,3 +681,22 @@ footer {
     margin-top: 10px;
     cursor: pointer;
 }
+
+/* =========================================
+   15. Education Page Logo Styling
+   ========================================= */
+/* ... keep your existing .edu-logo-vector ... */
+
+.edu-logo-raster {
+    width: 45px !important;
+    height: 45px !important;
+    min-width: 45px;
+    object-fit: contain;
+    flex-shrink: 0;
+    background: #ffffff; /* Clean white background for school logos */
+    border-radius: 4px;
+    padding: 4px;
+    /* 泙 Optimization for JPEGs to prevent blurriness */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
