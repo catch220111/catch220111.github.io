@@ -535,4 +535,22 @@ footer {
 .rocket-launch {
     transform: translateY(-100vh) !important;
     transition: transform 0.8s cubic-bezier(.47,0,.74,.71) !important;
+
+    
+/* Optimized for 1:1 Vector Logos */
+.edu-logo-vector {
+    width: 65px;
+    height: 65px;
+    /* Since they are 1:1, contain ensures they fill the 65px box perfectly */
+    object-fit: contain; 
+    /* Prevents sub-pixel blurring on high-res displays */
+    image-rendering: crisp-edges; 
+    flex-shrink: 0;
+}
+
+.edu-item-header {
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+    margin-bottom: 15px;
 }
