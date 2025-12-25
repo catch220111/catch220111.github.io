@@ -32,19 +32,72 @@ img {
 }
 
 /* =========================================
-   3. Header & Navigation
+   3. Header & Navigation (UPDATED TO MATCH SCREENSHOT)
    ========================================= */
 header {
     text-align: center;
-    padding: 60px 0 30px 0; /* */
+    padding: 60px 0 30px 0; 
 }
 
 h1 {
     font-size: 2.5rem;
     letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 30px; /* Added spacing for the tiered look */
     color: #ffffff;
 }
+
+/* Primary Navigation Level */
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    gap: 60px; /* Horizontal spacing between Home, Experience, Education */
+    align-items: flex-start; /* Keeps main links on the same horizontal line */
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--nebula-blue); 
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+    position: relative; /* For the animated underline */
+}
+
+/* Nested Sub-Navigation (The Bullet Points under Home) */
+.sub-nav {
+    display: flex;
+    flex-direction: column; /* Vertical stack for Home contents */
+    gap: 8px;
+    margin-top: 15px;
+    padding-left: 15px;
+    border-left: 1px solid #333; /* Vertical guide line from screenshot */
+    align-items: flex-start;
+    list-style-type: disc; /* Enables bullet points */
+}
+
+.sub-nav li {
+    font-size: 0.75rem;
+    margin-bottom: 2px;
+    color: #666; /* Dimmed color for secondary items */
+    display: list-item; /* Ensures bullet shows up */
+}
+
+.sub-nav a {
+    text-transform: capitalize; 
+    font-weight: normal;
+    color: #8899a6;
+    font-size: 0.8rem;
+}
+
+.sub-nav a:hover {
+    color: var(--nebula-blue);
+}
+
+.sub-nav a::after { display: none; } /* Remove underline effect for sub-nav */
 
 /* Specific style for the "Back" link on Project Pages */
 header p a {
@@ -59,29 +112,8 @@ header p a:hover {
     color: var(--nebula-blue);
 }
 
-/* Main Nav Layout */
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
-    gap: 40px; 
-    align-items: center; /* Changed from flex-start for better alignment with buttons */
-    flex-wrap: wrap;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--nebula-blue); 
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    transition: color 0.3s ease;
-    position: relative; /* For the animated underline */
-}
-
-/* Underline Hover Effect */
-nav a::after {
+/* Underline Hover Effect for Primary Links */
+nav > ul > li > a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -92,7 +124,7 @@ nav a::after {
     transition: width 0.3s ease;
 }
 
-nav a:hover::after {
+nav > ul > li > a:hover::after {
     width: 100%;
 }
 
@@ -113,33 +145,6 @@ nav a:hover {
     color: var(--deep-space) !important;
 }
 
-/* Nested Sub-Navigation (The Bullet Points on Home) */
-.sub-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 10px;
-    padding-left: 15px;
-    border-left: 1px solid #333;
-    align-items: flex-start;
-}
-
-.sub-nav li {
-    list-style-type: disc;
-    font-size: 0.75rem;
-    margin-bottom: 2px;
-    color: #666;
-}
-
-.sub-nav a {
-    text-transform: capitalize; 
-    font-weight: normal;
-    color: #8899a6;
-    font-size: 0.8rem;
-}
-
-.sub-nav a::after { display: none; } /* Remove underline effect for sub-nav */
-
 /* =========================================
    4. Hero Section (Home Page)
    ========================================= */
@@ -151,7 +156,7 @@ nav a:hover {
     gap: 40px;
     margin: 40px 0;
     border-bottom: 1px solid var(--slate-gray);
-    padding-bottom: 40px; /* */
+    padding-bottom: 40px; 
 }
 
 #about {
@@ -170,7 +175,7 @@ nav a:hover {
     width: 100%;
     height: auto;
     border: 2px solid #333;
-    border-radius: 4px; /* */
+    border-radius: 4px; 
 }
 
 /* =========================================
@@ -178,7 +183,7 @@ nav a:hover {
    ========================================= */
 section {
     padding: 40px 0;
-    border-bottom: 1px solid var(--slate-gray); /* */
+    border-bottom: 1px solid var(--slate-gray); 
 }
 
 h2 {
@@ -208,7 +213,7 @@ main ul li strong {
     padding: 20px;
     border-radius: 8px;
     border: 1px solid transparent;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Feedback implementation */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
 }
 
 .project-item:hover {
@@ -290,7 +295,7 @@ dd {
     border-radius: 8px;
     margin-bottom: 30px;
     border-left: 4px solid var(--nebula-blue);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 .exp-card:hover {
@@ -448,7 +453,7 @@ footer {
    ========================================= */
 .exp-card a, 
 .exp-card a.read-more {
-    color: var(--nebula-blue) !important; /* Forces the link to be readable Space Blue */
+    color: var(--nebula-blue) !important; 
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease, padding-left 0.3s ease;
@@ -456,8 +461,8 @@ footer {
 
 .exp-card a:hover, 
 .exp-card a.read-more:hover {
-    color: #ffffff !important; /* Turns white on hover for clear interaction */
-    padding-left: 5px; /* Subtle movement effect on hover */
+    color: #ffffff !important; 
+    padding-left: 5px; 
 }
 
 /* =========================================
@@ -486,7 +491,7 @@ footer {
 .grid-item img {
     width: 100%;
     height: 200px;
-    object-fit: cover; /* Keeps images uniform in size */
+    object-fit: cover; 
     display: block;
     border-bottom: 1px solid var(--slate-gray);
 }
