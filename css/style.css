@@ -537,22 +537,25 @@ footer {
     transition: transform 0.8s cubic-bezier(.47,0,.74,.71) !important;
 
     
-/* Optimized for 1:1 Vector Logos */
-.edu-logo-vector {
-    width: 65px !important;  /* Added !important to override any image defaults */
-    height: 65px !important;
-    object-fit: contain; 
-    image-rendering: -webkit-optimize-contrast; /* Keeps SVG paths sharp */
-    flex-shrink: 0; 
-    display: inline-block;
-    background: #ffffff; /* Adds a clean white tile behind the vector */
-    border-radius: 4px;
-    padding: 4px;
-}
-
+/* =========================================
+   15. Education Page Logo Styling (FIXED)
+   ========================================= */
 .edu-item-header {
     display: flex; 
     align-items: center; 
     gap: 20px; 
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.edu-logo-vector {
+    width: 65px !important;  
+    height: 65px !important;
+    object-fit: contain; 
+    image-rendering: -webkit-optimize-contrast;
+    flex-shrink: 0; 
+    display: block;
+    background: #ffffff; 
+    border-radius: 6px;
+    padding: 6px;
+    border: 1px solid var(--slate-gray);
 }
