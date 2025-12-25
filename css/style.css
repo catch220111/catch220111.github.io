@@ -558,29 +558,34 @@ footer {
 }
 
 /* =========================================
-   15. Education Page Logo Styling (FIXED)
+   15. Unified Education Logo Styling
    ========================================= */
+/* Target both the SVG (vector) and JPEG (raster) logos with the same rules */
+.edu-logo-vector, 
+.edu-logo-raster {
+    width: 45px !important;
+    height: 45px !important;
+    min-width: 45px;
+    max-width: 45px;
+    object-fit: contain;
+    flex-shrink: 0;
+    background-color: #ffffff; 
+    border-radius: 4px;
+    padding: 4px;
+    display: block;
+    box-sizing: border-box; /* 🟢 Prevents padding from making JPEGs look bigger */
+    
+    /* 🟢 Keeps the Goyang-si school JPEGs sharp and clear */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
 .edu-item-header {
     display: flex;
     flex-direction: row;
-    /* 🟢 Forces horizontal alignment */
     align-items: center;
-    /* 🟢 Centers logo vertically with title */
     gap: 15px;
     margin-bottom: 15px;
-}
-
-.edu-logo-vector {
-    width: 45px !important;
-    /* 🟢 Small, tiny logo as requested */
-    height: 45px !important;
-    min-width: 45px;
-    /* 🟢 Prevents logo from shrinking or growing */
-    object-fit: contain;
-    flex-shrink: 0;
-    background: #ffffff;
-    border-radius: 4px;
-    padding: 4px;
 }
 
 /* =========================================
@@ -680,23 +685,4 @@ footer {
     width: 100%; /* Makes the button as wide as the inputs for symmetry */
     margin-top: 10px;
     cursor: pointer;
-}
-
-/* =========================================
-   15. Education Page Logo Styling
-   ========================================= */
-/* ... keep your existing .edu-logo-vector ... */
-
-.edu-logo-raster {
-    width: 45px !important;
-    height: 45px !important;
-    min-width: 45px;
-    object-fit: contain;
-    flex-shrink: 0;
-    background: #ffffff; /* Clean white background for school logos */
-    border-radius: 4px;
-    padding: 4px;
-    /* 泙 Optimization for JPEGs to prevent blurriness */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
 }
