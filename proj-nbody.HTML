@@ -10,80 +10,112 @@
 </head>
 <body>
     <header>
-        <h1>N-Body Simulator: Modeling Galactic Collisions</h1>
+        <p><a href="index.html">&larr; Back to Portfolio</a></p>
     </header>
 
     <main>
-        <section>
-            <h2>Source Code</h2>
-            <p>The full python implementation are available on GitHub.</p>
-            <a href="https://github.com/catch220111/orbit-sim-2025" target="_blank" class="repo-btn">
-                View Repository on GitHub &rarr;
-            </a>
-        </section>
+        <div class="project-hero">
+            <h1>JPL-Integrated N-Body Orbital Simulator</h1>
+            <p class="subtitle">A high-fidelity 3D orbital mechanics engine bridging NASA ephemeris data with custom physics.</p>
+            <div class="meta">
+                <span>Language: Python</span>
+                <span>Framework: NASA JPL Horizons API</span>
+                <span>Role: Lead Developer</span>
+            </div>
+        </div>
 
         <section>
-            <h2>Project Overview</h2>
-            <p><strong>Role:</strong> Lead Developer</p>
-            <p><strong>Tools:</strong> Python, NumPy, Matplotlib</p>
-            <p><strong>Objective:</strong> To simulate the gravitational interactions between thousands of stellar bodies to model the dynamics of galactic mergers.</p>
-        </section>
-
-        <section>
-            <h2>The Challenge</h2>
+            <h2>Overview</h2>
             <p>
-                Simulating \(N \) particles requires calculating \(N^2 \) gravitational interactions for every time step. 
-                As $N$ increases, the computational cost grows exponentially, making real-time or high-resolution 
-                simulations impossible without significant algorithm optimization.
+                This simulator serves as a bridge between theoretical 3D orbital mechanics and real-world mission planning. By integrating live data sources used by professional aerospace organizations, the engine allows for the visualization and planning of interplanetary transfers.
             </p>
+    
+    <div class="video-container">
+        <iframe 
+                src="https://www.youtube-nocookie.com/embed/YgRXe9l16C0" 
+                title="JPL N-Body Simulation Demo" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+            <a href="https://github.com/catch220111/orbit-sim-2025" target="_blank" class="repo-btn">View Source Code on GitHub</a>
         </section>
 
         <section>
-            <h2>Technical Process</h2>
-            
-            
-            <p>The simulation was built on the fundamental Newtonian law of universal gravitation:</p>
-            $$F = G \frac{m_1 m_2}{r^2}$$
-            
-            <ul>
-                <li><strong>Algorithm Optimization:</strong> Implemented specialized data structures to handle vector calculations more efficiently, resulting in a <strong>15% increase in computation speed</strong> compared to standard iterative methods.</li>
-                <li><strong>Physics Integration:</strong> Developed a custom time-stepping integrator to ensure orbital stability and energy conservation throughout the collision event.</li>
-                <li><strong>Data Visualization:</strong> Utilized Matplotlib to generate visual representations of tidal tails and core mergers, providing a qualitative look at the large-scale structure of the universe.</li>
-            </ul>
-            
-            
+            <h2>Engineering Process</h2>
+            <div class="exp-card">
+                <ul>
+                    <li><strong>Data Pipeline:</strong> Programmatically retrieved state vectors (position and velocity) via the NASA JPL Horizons API.</li>
+                    <li><strong>Physics Architecture:</strong> Implemented a simultaneous N-body gravitational model, sum-totaling gravitational forces from all planetary masses.</li>
+                    <li><strong>Mission Control:</strong> Developed a <strong>Shooting Method</strong> for trajectory correction and <strong>B-Plane Targeting</strong> for planetary flybys.</li>
+                    <li><strong>Environment Management:</strong> Utilized Git for version control and <code>requirements.txt</code> for standardizing environment reproducibility.</li>
+                </ul>
+            </div>
         </section>
 
         <section>
-            <h2>Engineering Value & Learning</h2>
-            <p>
-                This project bridged the gap between my interest in <strong>Theoretical Cosmology</strong> and 
-                <strong>Software Engineering</strong>. It taught me how to manage 
-                computational resources—a vital skill when dealing with the massive datasets found in modern 
-                astronomical research.
-            </p>
-            <p><strong>Key Takeaway:</strong> Engineering isn't just about finding the answer; it's about building the most efficient path to that answer through constant iteration and optimization.</p>
+            <h2>Technical Struggles & Mitigations</h2>
+            
+            <div class="project-item">
+                <h3>1. Managing Numerical Drift</h3>
+                <p>
+                    Initial Euler integration caused planets to drift from orbits as the math failed to account for the curvature of the path within a single time-step.
+                </p>
+                
+                
+                
+                <div style="background: #161b22; padding: 15px; border-radius: 8px; margin: 10px 0; text-align: center;">
+                    $$ \vec{r}_{n+1} = \vec{r}_n + \vec{v}_n \Delta t $$
+                </div>
+                <p>
+                    <strong>Mitigation:</strong> Implemented <strong>variable precision logic</strong> to dynamically adjust the time-step (\(dt\)) based on proximity to planetary bodies.
+                </p>
+            </div>
+
+            <div class="project-item">
+                <h3>2. Trajectory Targeting</h3>
+                <p>
+                    A simple "aim-and-shoot" approach to Mars always failed because both objects move at tens of thousands of kilometers per hour.
+                </p>
+                <p>
+                    <strong>Mitigation:</strong> Developed an iterative <strong>Shooting Method</strong> to measure "miss distance" and back-calculate the required \(\Delta V\) until intercept.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Conclusion & Key Outcomes</h2>
+            <div class="exp-card">
+                <ul>
+                    <li><strong>Technical Maturity:</strong> Demonstrates transition from physics theory to industry-standard code hygiene and numerical problem-solving.</li>
+                    <li><strong>Data Handling:</strong> Successfully managed <strong>unstructured data</strong> from external NASA industrial datasets.</li>
+                    <li><strong>Professional Workflow:</strong> Adopted a developer's mindset using <code>.gitignore</code> and professional file organization (<code>src/</code> vs <code>research/</code>).</li>
+                    <li><strong>The "First" Milestone:</strong> Successfully intercepted Mars using a flight computer written entirely from scratch.</li>
+                </ul>
+            </div>
         </section>
     </main>
 
-        <footer>
-            <p>Kwanyoung Park</p>
-            <div class="contact-links">
-                <a href="mailto:park.kwanyoung@icloud.com" class="footer-link">Email</a>
-                <span class="separator">|</span>
-                <a href="https://www.linkedin.com/in/kwanyoung-park-0bb182383" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
-            </div>
-            <div class="social-links">
-                <a href="https://github.com/catch220111" target="_blank" class="github-link">
-                    GitHub Profile
-                </a>
-            </div>
-            <div class="footer-content">
-                <a href="assets/pdf/Kwanyoung_Park_Resume.pdf" download class="download-btn">
-                    Download Full Resume (PDF)
-                </a>
-            </div>
-            <p>&copy; 2025 Kwanyoung Park. All rights reserved.</p>
-        </footer>
+    <footer>
+        <p>Kwanyoung Park</p>
+        <div class="contact-links">
+            <a href="mailto:park.kwanyoung@icloud.com" class="footer-link">Email</a>
+            <span class="separator">|</span>
+            <a href="https://www.linkedin.com/in/kwanyoung-park-0bb182383" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+        </div>
+        <div class="social-links">
+            <a href="https://github.com/catch220111" target="_blank" class="github-link">
+                GitHub Profile
+            </a>
+        </div>
+        <div class="footer-content">
+            <a href="assets/pdf/Kwanyoung_Park_Resume.pdf" download class="download-btn">
+                Download Full Resume (PDF)
+            </a>
+        </div>
+        <p>&copy; 2025 Kwanyoung Park. All rights reserved.</p>
+    </footer>
 </body>
 </html>

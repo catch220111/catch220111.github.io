@@ -328,3 +328,60 @@ footer {
     margin-bottom: 20px;
     border-radius: 8px;
 }
+
+/* =========================================
+   10. Project Deep-Dive Header (New Class)
+   ========================================= */
+.project-hero {
+    background: linear-gradient(135deg, #161b22 0%, #0b0d17 100%);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #1a1d2b;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.project-hero h1 {
+    margin: 0;
+    text-align: left;
+    color: #4db8ff;
+}
+
+.project-hero .subtitle {
+    font-size: 1.1rem;
+    color: #8899a6;
+    margin-top: 10px;
+}
+
+.project-hero .meta {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #4db8ff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* =========================================
+   11. Responsive Video Embed
+   ========================================= */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 1px solid #1a1d2b;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
