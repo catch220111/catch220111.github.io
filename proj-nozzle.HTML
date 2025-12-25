@@ -1,82 +1,157 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>De Laval Nozzle Optimization | Kwanyoung Park</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
+
 <body>
     <header>
-        <h1>De Laval Nozzle Optimization</h1>
+        <p><a href="index.html">&larr; Back to Portfolio</a></p>
     </header>
 
     <main>
-        <section>
-            <h2>Source Code</h2>
-            <p>The full report is available (PDF).</p>
-            <a href="assets/pdf/Rocket Angle and its Thrust.pdf" download class="repo-btn">
-             Access PDF.
-            </a>
-            <p>The full data is available (csv).</p>
-            <a href="assets/csv:/static-fire-test-data.csv" download class="repo-btn">
-             Access csv.
-            </a>
-        </section>
-        <section>
-            <h2>Project Overview</h2>
-            <p><strong>Role:</strong> Independent Researcher</p>
-            <p><strong>Location:</strong> Beijing, China </p>
-            <p><strong>Objective:</strong> To analyze nozzle performance and thrust output for small-scale solid rocket motors by optimizing geometry.</p>
-        </section>
+        <div class="project-hero">
+            <h1>De Laval Nozzle Optimization & Thrust Analysis</h1>
+            <p class="subtitle">Investigating how exit cone geometry (\(10^{\circ}\) to \(30^{\circ}\)) influences
+                supersonic exhaust efficiency.</p>
+            <div class="meta">
+                <span>Tools: C++, SolidWorks, Arduino</span>
+                <span>Category: Independent Research</span>
+                <span>Year: 2022</span>
+            </div>
+        </div>
 
         <section>
-            <h2>The Challenge</h2>
+            <h2>Overview</h2>
             <p>
-                In small-scale rocketry, maximizing thrust efficiency depends heavily on the internal geometry of the nozzle. 
-                The challenge was to determine how varying the exit and entrance angles affects the transition of exhaust gases 
-                to supersonic speeds.
+                As a 10th-grade researcher, I designed and executed a study to analyze how the exit angle of a de Laval
+                nozzle affects the conversion of thermal energy into kinetic thrust. This project required
+                building a custom thrust-testing stand from scratch and developing a C++ numerical model to bridge the
+                gap between theoretical fluid dynamics and empirical data.
             </p>
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <a href="assets/pdf/Rocket Angle and its Thrust.pdf" download class="repo-btn">Download Full Report
+                    (PDF)</a>
+                <a href="assets/csv/static-fire-test-data.csv" download class="repo-btn">Static Fire Data (CSV)</a>
+            </div>
         </section>
 
         <section>
-            <h2>Technical Process</h2>
-            
-            <ul>
-                <li><strong>Numerical Modeling:</strong> Developed a custom numerical model using <strong>C++</strong> to simulate gas flow and predict thrust based on various geometric parameters.</li>
-                <li><strong>CAD Validation:</strong> Utilized <strong>CAD modeling</strong> to validate the nozzle geometry and ensure the design was feasible for physical construction.</li>
-                <li><strong>Hardware Instrumentation:</strong> Constructed a physical <strong>load cell thrust measurement device</strong> to capture real-time data from test firings.</li>
-            </ul>
+            <h2>Methodology & Testing Hardware</h2>
+            <div class="exp-card">
+                <ul>
+                    <li><strong>Numerical Baseline:</strong> Used the <strong>Rocket Thrust Equation</strong> to fix
+                        nozzle top area (25x throat width) and entrance angles at \(30^{\circ}\) to isolate the exit
+                        angle as the independent variable.</li>
+                    <li><strong>Static Fire Test Stand:</strong> Constructed a cube-shaped aluminum frame housing a 20kg
+                        <strong>Load Cell sensor</strong> and <strong>HX711 amplifier</strong>.</li>
+                    <li><strong>Propellant Synthesis:</strong> Formulated KNSB fuel (65% Potassium Nitrate, 35% Sucrose)
+                        and utilized specialized cellophane molds to ensure consistent grain geometry.
+                        </li>
+                    <li><strong>Data Capture:</strong> Built an <strong>Arduino-based data logger</strong> that sampled
+                        thrust values every 0.1 seconds, recording over 200 data points per static fire.
+                        </li>
+                </ul>
+            </div>
+        </section>
+
+
+        <section>
+            <h2>Technical Struggles & Engineering Mitigations</h2>
+
+            <div class="project-item">
+                <h3>1. High-Temperature Material Failure</h3>
+                <p>
+                    Initial tests used PLA 3D-printed nozzles which would deform under the extreme heat of KNSB
+                    combustion.
+                </p>
+                <p>
+                    <strong>Mitigation:</strong> Used 3D-printed designs only as <strong>molds for cement-cast
+                        nozzles</strong>. This allowed for the complex internal geometry of a de Laval nozzle while
+                    providing the necessary thermal resistance.
+                </p>
+            </div>
+
+            <div class="project-item">
+                <h3>2. Numerical Precision & Latency</h3>
+                <p>
+                    The initial C++ code and Load Cell setup suffered from signal noise and measurement
+                    latency, making it difficult to capture the exact peak of the thrust curve.
+                </p>
+
+                <div
+                    style="background: #161b22; padding: 15px; border-radius: 8px; margin: 10px 0; text-align: center;">
+                    $$ I = \int F \, dt \approx \sum (F_{avg} \times \Delta t) $$
+                    <small style="color: #666;">Approximating total impulse through discrete 0.1s
+                        time-steps.</small>
+                </div>
+
+                <p>
+                    <strong>Mitigation:</strong> Implemented <strong>Standard Deviation analysis</strong> to
+                    quantify "radicalness" (combustion intensity) and used a line of best fit to determine a correlation
+                    coefficient of $-0.98$ for thrust efficiency.
+                </p>
+            </div>
         </section>
 
         <section>
-            <h2>Value & Findings</h2>
-            <p>
-                The research successfully validated that controlling the <strong>nozzle entrance angle</strong> serves as an 
-                effective primary control for small solid rocket motors. 
-            </p>
-            <p><strong>Key Result:</strong> Optimization ensured that exhaust flow consistently reaches <strong>Mach speed</strong> before reaching the nozzle neck, maximizing the conversion of thermal energy into kinetic energy.</p>
+            <h2>Reflections & Modern Re-Analysis</h2>
+            <div class="exp-card">
+                <ul>
+                    <li><strong>Historical Context:</strong> This project taught me that engineering is a compromise
+                        between parameters like weight, mechanical strength, and performance.</li>
+                    <li><strong>The Lesson of 15°:</strong> My results corroborated professional findings that exit
+                        angles near \(15^{\circ}\) optimize the conversion of subsonic to supersonic flow while
+                        minimizing turbulence.</li>
+                    <li><strong>Current Goal:</strong> I am currently re-processing this 2022 dataset using
+                        <strong>Savitzky-Golay Filter</strong> to replace the original linear approximations.</li>
+                    <li><strong>Growth:</strong> Moving from 10th-grade "basic" C++ to my current work at <strong>USC
+                            RPL</strong> reflects a shift from empirical "guessing" to high-fidelity numerical
+                        simulation.</li>
+                </ul>
+            </div>
         </section>
     </main>
 
-        <footer>
-            <p>Kwanyoung Park</p>
-            <div class="contact-links">
-                <a href="mailto:park.kwanyoung@icloud.com" class="footer-link">Email</a>
-                <span class="separator">|</span>
-                <a href="https://www.linkedin.com/in/kwanyoung-park-0bb182383" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
-            </div>
-            <div class="social-links">
-                <a href="https://github.com/catch220111" target="_blank" class="github-link">
-                    GitHub Profile
-                </a>
-            </div>
-            <div class="footer-content">
-                <a href="assets/pdf/Kwanyoung_Park_Resume.pdf" download class="download-btn">
-                    Download Full Resume (PDF)
-                </a>
-            </div>
-            <p>&copy; 2025 Kwanyoung Park. All rights reserved.</p>
-        </footer>
+    <footer>
+        <p>Kwanyoung Park</p>
+        <div class="contact-links">
+            <a href="mailto:park.kwanyoung@icloud.com" class="footer-link">Email</a>
+            <span class="separator">|</span>
+            <a href="https://www.linkedin.com/in/kwanyoung-park-0bb182383" target="_blank" rel="noopener noreferrer"
+                class="footer-link">LinkedIn</a>
+        </div>
+        <div class="social-links">
+            <a href="https://github.com/catch220111" target="_blank" class="github-link">
+                GitHub Profile
+            </a>
+        </div>
+        <div class="footer-content">
+            <a href="assets/pdf/Kwanyoung_Park_Resume.pdf" download class="download-btn">
+                Download Full Resume (PDF)
+            </a>
+        </div>
+        <p>&copy; 2025 Kwanyoung Park. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>
