@@ -630,24 +630,27 @@ footer {
 
 
 /* =========================================
-   17. Contact Form Functionality & Layout
+   17. Contact Form (Balanced Dark Theme)
    ========================================= */
 .contact-card {
-    background: var(--hull-gray);
-    padding: 30px;
+    background: var(--hull-gray); /* Matches project cards */
+    padding: 40px;
     border-radius: 8px;
     border: 1px solid var(--slate-gray);
-    margin-top: 20px;
+    max-width: 600px; /* Limits width to keep it centered and professional */
+    margin: 40px auto; /* Centers the form on the page */
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column; /* Stacks label on top of input */
+    align-items: flex-start;
 }
 
 .form-group label {
-    display: block;
-    color: var(--nebula-blue);
-    font-size: 0.85rem;
+    color: var(--nebula-blue); /* Consistent blue labels */
+    font-size: 0.9rem;
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 8px;
@@ -655,20 +658,26 @@ footer {
 
 .form-group input, 
 .form-group textarea {
-    width: 100%;
+    width: 100%; /* Spans full width of the card for balance */
     padding: 12px;
-    background: var(--deep-space); /* Deep background for input fields */
+    background-color: var(--deep-space) !important; /* Removes white background */
     border: 1px solid #333;
     border-radius: 4px;
     color: var(--text-main);
     font-family: inherit;
-    box-sizing: border-box; /* 泙 CRITICAL: Prevents the width from breaking the card layout */
+    box-sizing: border-box; /* Prevents overflow */
 }
 
-/* Functional feedback when a user clicks into a field */
+/* Focused state for high-tech feedback */
 .form-group input:focus, 
 .form-group textarea:focus {
     outline: none;
     border-color: var(--nebula-blue);
-    box-shadow: 0 0 10px var(--success-glow);
+    box-shadow: 0 0 10px var(--success-glow); /* Adds that signature glow */
+}
+
+.contact-card button {
+    width: 100%; /* Makes the button as wide as the inputs for symmetry */
+    margin-top: 10px;
+    cursor: pointer;
 }
