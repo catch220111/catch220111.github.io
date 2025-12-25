@@ -539,13 +539,15 @@ footer {
     
 /* Optimized for 1:1 Vector Logos */
 .edu-logo-vector {
-    width: 65px;
-    height: 65px;
-    /* Since they are 1:1, contain ensures they fill the 65px box perfectly */
+    width: 65px !important;  /* Added !important to override any image defaults */
+    height: 65px !important;
     object-fit: contain; 
-    /* Prevents sub-pixel blurring on high-res displays */
-    image-rendering: crisp-edges; 
-    flex-shrink: 0;
+    image-rendering: -webkit-optimize-contrast; /* Keeps SVG paths sharp */
+    flex-shrink: 0; 
+    display: inline-block;
+    background: #ffffff; /* Adds a clean white tile behind the vector */
+    border-radius: 4px;
+    padding: 4px;
 }
 
 .edu-item-header {
