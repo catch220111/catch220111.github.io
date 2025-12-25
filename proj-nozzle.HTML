@@ -63,17 +63,44 @@
                         nozzle top area (25x throat width) and entrance angles at \(30^{\circ}\) to isolate the exit
                         angle as the independent variable.</li>
                     <li><strong>Static Fire Test Stand:</strong> Constructed a cube-shaped aluminum frame housing a 20kg
-                        <strong>Load Cell sensor</strong> and <strong>HX711 amplifier</strong>.</li>
+                        <strong>Load Cell sensor</strong> and <strong>HX711 amplifier</strong>.
+                    </li>
                     <li><strong>Propellant Synthesis:</strong> Formulated KNSB fuel (65% Potassium Nitrate, 35% Sucrose)
                         and utilized specialized cellophane molds to ensure consistent grain geometry.
-                        </li>
+                    </li>
                     <li><strong>Data Capture:</strong> Built an <strong>Arduino-based data logger</strong> that sampled
                         thrust values every 0.1 seconds, recording over 200 data points per static fire.
-                        </li>
+                    </li>
                 </ul>
             </div>
         </section>
 
+        <section id="gallery">
+            <h2>Technical Gallery: From CAD to Static Fire</h2>
+            <div class="engineering-grid">
+                <div class="grid-item">
+                    <img src="assets/jpeg/nozzle_cad.jpg" alt="SolidWorks De Laval Nozzle Model">
+                    <p class="caption">CAD optimization of the converging-diverging geometry[cite: 57, 132].</p>
+                </div>
+
+                <div class="grid-item">
+                    <img src="assets/jpeg/cement_mold.jpg" alt="3D Printed Nozzle Molds">
+                    <p class="caption">3D printed PLA molds used for casting cement nozzles[cite: 134, 138, 140].</p>
+                </div>
+
+                <div class="grid-item">
+                    <img src="assets/jpeg/test_stand.jpg" alt="Aluminum Cube Test Stand">
+                    <p class="caption">Aluminum frame test stand with Load Cell and HX711 amplifier[cite: 115, 117,
+                        121].</p>
+                </div>
+
+                <div class="grid-item">
+                    <img src="assets/jpeg/thrust_graph.jpg" alt="Thrust vs Time Plot">
+                    <p class="caption">Raw data showing the relationship between exit angle and thrust (g)[cite: 236,
+                        272].</p>
+                </div>
+            </div>
+        </section>
 
         <section>
             <h2>Technical Struggles & Engineering Mitigations</h2>
@@ -123,7 +150,8 @@
                         angles near \(15^{\circ}\) optimize the conversion of subsonic to supersonic flow while
                         minimizing turbulence.</li>
                     <li><strong>Current Goal:</strong> I am currently re-processing this 2022 dataset using
-                        <strong>Savitzky-Golay Filter</strong> to replace the original linear approximations.</li>
+                        <strong>Savitzky-Golay Filter</strong> to replace the original linear approximations.
+                    </li>
                     <li><strong>Growth:</strong> Moving from 10th-grade "basic" C++ to my current work at <strong>USC
                             RPL</strong> reflects a shift from empirical "guessing" to high-fidelity numerical
                         simulation.</li>
