@@ -1,11 +1,18 @@
 /* =========================================
    Swiss Editorial: Classic Archive
    ========================================= */
+
+html {
+    scroll-behavior: smooth; /* Creates a smooth slide when clicking index items */
+}
+
 :root {
     --swiss-orange: #FF4500; /* High saturation classic orange */
     --paper-white: #F4F4F4;  /* Off-white "Old Paper" feel */
     --ink-black: #1A1A1A;
 }
+
+
 
 body {
     background-color: var(--paper-white);
@@ -99,12 +106,15 @@ body {
     white-space: nowrap;
 }
 
-.artifact-box img {
-    filter: saturate(0.5); /* Start slightly desaturated for a vintage look */
-    transition: filter 0.4s ease, transform 0.4s ease;
+.editorial-index a {
+    color: var(--ink-black);
+    text-decoration: none; /* Removes the standard underline */
+    transition: color 0.2s ease;
+    display: block;
+    margin-bottom: 5px;
 }
 
-.artifact-box:hover img {
-    filter: saturate(1.5); /* Pops into high-saturation orange on hover */
-    transform: translateY(-5px); /* Subtle physical lift */
+.editorial-index a:hover {
+    color: var(--swiss-orange); /* Turns orange when you hover over the signal name */
+    text-decoration: underline;
 }
