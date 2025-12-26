@@ -84,19 +84,20 @@ body {
     display: inline-block;
     color: var(--ink-black);
     text-decoration: none;
-    font-size: 0.9rem;
-    margin-bottom: 40px; /* This creates the gap BELOW 'Return to Base' */
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 80px; /* 🟢 Increased from 40px to create a larger gap */
+    text-transform: uppercase;
 }
 
 .editorial-index {
     display: flex;
-    gap: 40px;
-    border-bottom: 2px solid var(--ink-black);
-    padding-bottom: 20px;
-    margin-bottom: 60px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    text-transform: uppercase;
+    flex-direction: column; /* Stacks the signals vertically */
+    gap: 12px;
+    border-top: 2px solid var(--ink-black); /* Thick Swiss line */
+    padding-top: 30px;
+    margin-bottom: 100px; /* Space before the actual grid starts */
+    font-size: 0.75rem;
 }
 .index-column {
     display: flex;
