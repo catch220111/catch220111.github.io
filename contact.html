@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
+    <style>
+        body,
+        html {
+            height: auto !important;
+            /* Overrides the 100vh lock */
+            overflow-y: auto !important;
+            /* Forces the scrollbar to appear if needed */
+        }
+    </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Mission Control | Kwanyoung Park</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="assets/svg/favicon.svg">
 </head>
-<body class="starfield"> <header>
+
+<body class="starfield">
+    <header>
         <h1>Mission Control</h1>
         <p style="color: var(--nebula-blue); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">
             Communication Hub & Professional Networking
@@ -23,10 +35,13 @@
         <section id="context">
             <h2>Establishing Contact</h2>
             <p>
-                In astronautics, <strong>Mission Control</strong> is the central hub that manages communication between the ground and the spacecraft. 
+                In astronautics, <strong>Mission Control</strong> is the central hub that manages communication between
+                the ground and the spacecraft.
             </p>
             <p>
-                On this site, this page serves as my direct line for professional inquiries, project collaborations, or engineering discussions. Whether you are looking to discuss orbital mechanics or just want to say hello, the signal is open.
+                On this site, this page serves as my direct line for professional inquiries, project collaborations, or
+                engineering discussions. Whether you are looking to discuss orbital mechanics or just want to say hello,
+                the signal is open.
             </p>
         </section>
 
@@ -44,7 +59,8 @@
 
                 <div class="form-group">
                     <label for="message">Transmission Details</label>
-                    <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+                    <textarea id="message" name="message" rows="6" placeholder="Type your message here..."
+                        required></textarea>
                 </div>
 
                 <button type="submit" class="download-btn">Initiate Transmission</button>
@@ -69,10 +85,11 @@
                     body: data,
                     headers: { 'Accept': 'application/json' }
                 });
-                if (response.ok) { window.location.href = "success.html"; } 
+                if (response.ok) { window.location.href = "success.html"; }
                 else { alert("Transmission Failed: Signal weak."); }
             } catch (error) { alert("Transmission Failed: Connection lost."); }
         });
     </script>
 </body>
+
 </html>
