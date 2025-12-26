@@ -55,3 +55,46 @@ body {
 .span-4 { grid-column: span 4; }
 .span-8 { grid-column: span 8; }
 .offset-2 { grid-column-start: 3; }
+
+/* Swiss Grid Logic */
+.span-12 { grid-column: span 12; }
+.span-8  { grid-column: span 8; }
+.span-6  { grid-column: span 6; }
+.span-4  { grid-column: span 4; }
+.span-3  { grid-column: span 3; }
+
+/* The "Offset" creates the classic asymmetric Swiss look */
+.offset-2 { grid-column-start: 3; }
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 900px) {
+    .span-8, .span-6, .span-4, .span-3 { grid-column: span 12; }
+    .offset-2 { grid-column-start: auto; }
+}
+
+
+.editorial-index {
+    display: flex;
+    gap: 40px;
+    border-bottom: 2px solid var(--ink-black);
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.index-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.vertical-meta {
+    position: absolute;
+    left: -30px; /* Positions it just outside the image */
+    top: 50px;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    font-size: 0.6rem;
+    color: var(--swiss-orange);
+    white-space: nowrap;
+}
