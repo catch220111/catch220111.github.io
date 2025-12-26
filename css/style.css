@@ -758,3 +758,23 @@ footer {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 0.8; }
 }
+
+
+/* =========================================
+   Creative Link Customization
+   ========================================= */
+
+/* 1. Set the default color to your Swiss Orange */
+nav > ul > li > a.nav-creative {
+    color: #FF4500;
+}
+
+/* 2. Fix the Underline: Override the blue with orange */
+nav > ul > li > a.nav-creative::after {
+    background-color: #FF4500;
+}
+
+/* 3. Restore the Special Effect: Ensure it turns white on hover like others */
+nav > ul > li > a.nav-creative:hover {
+    color: #ffffff;
+}
