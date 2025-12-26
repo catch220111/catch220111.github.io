@@ -79,6 +79,14 @@ body {
     .offset-2 { grid-column-start: auto; }
 }
 
+/* The 'Return to Base' link */
+.base-link {
+    display: inline-block;
+    color: var(--ink-black);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 40px; /* This creates the gap BELOW 'Return to Base' */
+}
 
 .editorial-index {
     display: flex;
