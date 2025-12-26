@@ -725,3 +725,34 @@ footer {
     text-align: center;
 }
 
+/* =========================================
+   20. Starfield Background Logic
+   ========================================= */
+.starfield {
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Creating CSS-only stars */
+.starfield::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background: white;
+    /* This creates 50+ "stars" using box-shadows */
+    box-shadow: 
+        15vw 10vh #fff, 35vw 45vh #fff, 85vw 25vh #fff, 
+        10vw 80vh #fff, 50vw 20vh #fff, 70vw 60vh #fff, 
+        90vw 90vh #fff, 25vw 30vh #fff, 5vw 50vh #fff;
+    opacity: 0.5;
+    animation: twinkle 5s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
