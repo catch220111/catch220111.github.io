@@ -716,12 +716,14 @@ footer {
    ========================================= */
 .full-screen-center {
     display: flex !important;
+    flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
     min-height: 100vh !important;
+    max-width: none !important; /* Breaks out of the 900px body limit */
     margin: 0 !important;
     padding: 0 !important;
-    max-width: none !important; /* Overrides the 900px limit from Section 2 */
+    width: 100% !important;
     text-align: center;
 }
 
