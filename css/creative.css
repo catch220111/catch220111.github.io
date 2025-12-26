@@ -98,3 +98,13 @@ body {
     color: var(--swiss-orange);
     white-space: nowrap;
 }
+
+.artifact-box img {
+    filter: saturate(0.5); /* Start slightly desaturated for a vintage look */
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.artifact-box:hover img {
+    filter: saturate(1.5); /* Pops into high-saturation orange on hover */
+    transform: translateY(-5px); /* Subtle physical lift */
+}
