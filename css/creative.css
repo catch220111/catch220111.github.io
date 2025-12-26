@@ -1,0 +1,150 @@
+/* =========================================
+   Street Neon: Creative Archive Styles
+   ========================================= */
+:root {
+    --neon-orange: #FF5F1F;
+    --dim-orange: rgba(255, 95, 31, 0.3);
+    --flicker-glow: 0 0 10px #FF5F1F, 0 0 20px #FF5F1F;
+}
+
+body {
+    background-color: #000000; /* Pitch black for maximum contrast */
+    color: var(--neon-orange);
+    font-family: 'Courier New', Courier, monospace; /* Monospaced for a "signage" feel */
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 250px; /* Slightly taller for visual impact */
+    gap: 15px;
+    grid-template-areas: 
+        "signal signal log log"
+        "signal signal w1 w2"
+        "w3 w4 w5 w6"
+        "w7 w7 w8 w9"
+        "w10 w11 w12 w12"
+        "w13 w14 w15 w16"
+        "w17 w18 w19 w20"
+        "w21 w21 w22 w22";
+}
+
+/* Mapping Classes to Areas */
+.work-1-block { grid-area: w1; }
+.work-2-block { grid-area: w2; }
+.work-3-block { grid-area: w3; }
+.work-4-block { grid-area: w4; }
+.work-5-block { grid-area: w5; }
+.work-6-block { grid-area: w6; }
+.work-7-block { grid-area: w7; }
+.work-8-block { grid-area: w8; }
+.work-9-block { grid-area: w9; }
+.work-10-block { grid-area: w10; }
+.work-11-block { grid-area: w11; }
+.work-12-block { grid-area: w12; }
+.work-13-block { grid-area: w13; }
+.work-14-block { grid-area: w14; }
+.work-15-block { grid-area: w15; }
+.work-16-block { grid-area: w16; }
+.work-17-block { grid-area: w17; }
+.work-18-block { grid-area: w18; }
+.work-19-block { grid-area: w19; }
+.work-20-block { grid-area: w20; }
+.work-21-block { grid-area: w21; }
+.work-22-block { grid-area: w22; }
+
+
+/* Assign names to your block classes */
+.signal-block { grid-area: signal; }
+.log-block    { grid-area: log; }
+.archive-block { grid-area: archive; }
+.hardware-block { grid-area: hardware; }
+
+/* The Neon Block Base */
+.neon-block {
+    background: #050505;
+    border: 2px solid var(--neon-orange);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Flickering Animation */
+.neon-block:hover {
+    box-shadow: var(--flicker-glow);
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+/* Utility: Ensure any media fits the bento box */
+.fit-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+/* Utility: For quotes or monospaced text */
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* The small black labels in the corner of blocks */
+.label-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--neon-orange);
+    color: #000;
+    font-size: 0.65rem;
+    font-weight: bold;
+    padding: 3px 8px;
+    text-transform: uppercase;
+}
+
+/* High-intensity text for quotes */
+.neon-text {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange);
+    margin: 0;
+}
+
+
+/* =========================================
+   Neon Startup Sequence
+   ========================================= */
+@keyframes neon-startup {
+    0%   { opacity: 0; box-shadow: none; }
+    10%  { opacity: 0.5; box-shadow: var(--flicker-glow); }
+    12%  { opacity: 0.1; box-shadow: none; }
+    20%  { opacity: 1; box-shadow: var(--flicker-glow); }
+    22%  { opacity: 0.2; box-shadow: none; }
+    25%  { opacity: 1; box-shadow: var(--flicker-glow); }
+    100% { opacity: 1; box-shadow: var(--flicker-glow); }
+}
+
+/* Apply this to all neon blocks on page load */
+.neon-block {
+    animation: neon-startup 0.8s ease-out forwards;
+    /* staggered delay for a "sequential power-up" effect */
+}
+
+/* Optional: Stagger the power-up so they don't all turn on at once */
+.neon-block:nth-child(2) { animation-delay: 0.1s; }
+.neon-block:nth-child(3) { animation-delay: 0.2s; }
+.neon-block:nth-child(4) { animation-delay: 0.3s; }
+
+
