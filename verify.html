@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NASA_REPORT // VERIFY_LOG // KWANYOUNG PARK</title>
+    <link rel="stylesheet" href="css/nasa.css">
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/mathjax.min.js"></script>
+
+    <style>
+        mjx-container {
+            display: inline-grid !important;
+            margin: 0.2em 0 !important;
+            color: inherit !important;
+        }
+        .tex2jax_process {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body class="tex2jax_process">
+
+    <header class="nasa-header">
+        <div class="header-left">
+            <span class="agency-tag">TECHNICAL ARCHIVE // VERIFICATION & VALIDATION (V&V)</span>
+            <h1 class="report-title">REPORT_ID: V-2025-ARCHIVE</h1>
+        </div>
+        <div class="header-right">
+            <div class="box-tag">LEVEL: TECHNICAL_RECONSTRUCTION</div>
+        </div>
+    </header>
+
+    <main class="catalogue-container">
+
+        <section class="subsystem-block">
+            <div class="block-label">SUBSYSTEM_01 // STATIC_FIRE_VALIDATION</div>
+
+            <div class="status-alert" style="margin: 20px 0; border: 1px solid var(--ink-black); background: #fdfdfd; padding: 20px;">
+                <p class="meta-label" style="margin-top: 0;">MODULE_01.A // MISSION_DIRECTIVE</p>
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.6; margin-bottom: 0;">
+                    <strong>OBJECTIVE:</strong> Quantify the ballistic performance and total impulse of amateur solid rocket motor (ASRM) configurations.
+                    <br><br>
+                    <strong>PURPOSE:</strong> Validating theoretical thermodynamic models against empirical load-cell data to characterize nozzle expansion efficiency.
+                </p>
+            </div>
+
+            <div class="grid-content">
+                <div class="image-frame">
+                    <img src="assets/jpeg/proj-nozzle-aluminium-cad.jpeg" alt="Thrust Test Stand">
+                    <span class="figure-caption">FIG 1.1: STATIC THRUST TEST STAND ASSEMBLY</span>
+                </div>
+                <div class="data-readout">
+                    <div class="log-entry"><span class="key">HARDWARE:</span> ALUMINUM PROFILES / LOAD CELL</div>
+                    <div class="log-entry"><span class="key">FIRMWARE:</span> ARDUINO / C++ DATA ACQUISITION</div>
+                    <div class="log-entry"><span class="key">FUEL:</span> KNO3 + SUCROSE (SUGAR_ROCKET)</div>
+
+                    <p class="summary-text">
+                        The objective was to quantify <strong>Specific Impulse $I_{sp}$</strong>. Raw data was processed through <strong>MATLAB</strong> for numeric integration.
+                    </p>
+                </div>
+            </div>
+
+            
+
+            <div class="tech-log" style="margin-top: 30px;">
+                <div class="table-header">MEASURED_PERFORMANCE_METRICS</div>
+                <table>
+                    <tr><td>PARAMETER</td><td>SYMBOL</td><td>VALUE (AVG)</td><td>UNITS</td></tr>
+                    <tr><td>PEAK THRUST</td><td>$F_{max}$</td><td>12.4</td><td>NEWTONS</td></tr>
+                    <tr><td>TOTAL IMPULSE</td><td>$I_t$</td><td>18.2</td><td>N·s</td></tr>
+                    <tr><td>SPECIFIC IMPULSE</td><td>$I_{sp}$</td><td>110.5</td><td>SECONDS</td></tr>
+                </table>
+            </div>
+
+            <div class="artifact-box span-12" style="margin-top: 30px; border-top: 1px dashed #000; padding-top: 20px;">
+                <p class="meta-label" style="color: var(--nasa-red);">MODULE_01.B // PMA // SYSTEM_INTEGRITY_REFRACTION</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <div class="summary-text" style="font-size: 0.85rem; line-height: 1.6;">
+                        <strong>LIMITATIONS:</strong> Cement nozzle erosion over successive test cycles resulted in slight throat area expansion, affecting the expansion ratio.
+                    </div>
+                    <div class="summary-text" style="font-size: 0.85rem; line-height: 1.6; border-left: 1px solid #ddd; padding-left: 20px;">
+                        <strong>FUTURE_ITERATION:</strong> Implementation of graphite or phenolic inserts to maintain constant throat geometry during high-enthalpy combustion.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="subsystem-block">
+            <div class="block-label">SUBSYSTEM_02 // GNC_FLIGHT_LOGIC (PROJECT2.PY)</div>
+
+            <div class="status-alert" style="margin: 20px 0; border: 1px solid var(--ink-black); background: #fdfdfd; padding: 20px;">
+                <p class="meta-label" style="margin-top: 0;">MODULE_02.A // MISSION_DIRECTIVE</p>
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.6; margin-bottom: 0;">
+                    <strong>OBJECTIVE:</strong> Establish stabilized navigation by integrating 9-DOF sensor inputs (ACC/GYR/MAG).
+                    <br><br>
+                    <strong>PURPOSE:</strong> Transform body-frame telemetry into a 3D coordinate frame (NED) to enable autonomous trajectory tracking.
+                </p>
+            </div>
+
+            <div class="grid-content">
+                <div class="data-readout">
+                    <p class="meta-label">MODULE_02.B // SIGNAL_PROCESSING_STRATEGY</p>
+                    <p class="summary-text">Fusing high-frequency Gyroscope estimates with low-frequency Accelerometer/Magnetometer references via a <strong>Complementary Filter</strong>.</p>
+                    <div class="log-entry"><span class="key">ALPHA_NAV:</span> 0.75</div>
+                    <div class="log-entry"><span class="key">DECLINATION:</span> 12.3° (LA)</div>
+                </div>
+
+                <div class="tech-log" style="border: 2px solid var(--ink-black); padding: 15px; background: #f9f9f9;">
+                    <div class="table-header">NOISE_MITIGATION_PROTOCOL</div>
+                    <div style="font-family: monospace; font-size: 0.7rem; line-height: 1.4;">
+                        [FILTER_01]: <strong>ACCEL_DEADZONE</strong> (0.15 m/s²) <br>
+                        [FILTER_02]: <strong>VELOCITY_DECAY</strong> (0.98) <br>
+                        &gt;&gt; Mitigates position divergence to infinity.
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="artifact-box span-12" style="margin-top: 40px; border-top: 2px solid var(--ink-black); padding-top: 20px;">
+                <p class="meta-label">MODULE_02.C // CRITICAL_ALGORITHMIC_LOGIC</p>
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-bottom: 30px;">
+                    <div class="code-module">
+                        <div class="table-header">BLOCK_01: SENSOR_CALIBRATION</div>
+                        <pre style="font-family: monospace; font-size: 0.7rem; background: #f4f4f4; padding: 15px; border: 1px solid #000;">
+# [V&V] CAPTURING GYRO BIAS & ACCEL SCALE
+for i in range(N):
+    gx, gy, gz = sensors.readGYR()
+    acc_mag = math.sqrt(ax**2 + ay**2 + az**2)
+    acc_sum_norm += acc_mag
+
+acc_scale = 9.81 / (acc_sum_norm / N)
+            </pre>
+                    </div>
+                    <div class="tech-log" style="font-size: 0.75rem; line-height: 1.5;">
+                        <p><strong>INTENT:</strong> Normalizes accelerometer magnitude to Earth-gravity ($9.81 m/s^2$).</p>
+                    </div>
+                </div>
+
+                <div style="background: var(--ink-black); color: white; padding: 20px; text-align: center;">
+                    <a href="https://github.com/your-username/your-repo" style="color: var(--swiss-orange); text-decoration: none; font-weight: bold;">ACCESS FULL SOURCE_CODE &rarr;</a>
+                </div>
+            </div>
+
+            <div class="artifact-box span-12" style="margin-top: 30px; border-top: 1px dashed #000; padding-top: 20px;">
+                <p class="meta-label" style="color: var(--nasa-red);">MODULE_02.D // PMA // SYSTEM_INTEGRITY_REFRACTION</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <div class="summary-text" style="font-size: 0.85rem; line-height: 1.6;">
+                        <strong>LIMITATIONS:</strong> Persistent drift during long-duration integration remains a known constraint of the Alpha method.
+                    </div>
+                    <div class="summary-text" style="font-size: 0.85rem; line-height: 1.6; border-left: 1px solid #ddd; padding-left: 20px;">
+                        <strong>FUTURE_ITERATION:</strong> Transition to a <strong>Kalman Filter</strong> for improved stochastic estimation.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="subsystem-block">
+            <div class="block-label">SUBSYSTEM_03 // EMBEDDED_INFRASTRUCTURE (INTEL N100)</div>
+            <div class="status-alert" style="margin: 20px 0; border: 1px solid var(--ink-black); background: #fdfdfd; padding: 20px;">
+                <p class="meta-label" style="margin-top: 0;">03.A // MISSION_DIRECTIVE</p>
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem;">
+                    <strong>OBJECTIVE:</strong> Deploy a secure virtualization environment for engineering simulations.
+                </p>
+            </div>
+            <div class="grid-content">
+                <div class="data-readout">
+                    <div class="log-entry"><span class="key">HYPERVISOR:</span> PROXMOX VE</div>
+                    <div class="log-entry"><span class="key">NETWORKING:</span> TAILSCALE MESH VPN</div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="subsystem-block">
+            <div class="block-label">SUBSYSTEM_04 // NUMERICAL_ANALYSIS (MATLAB)</div>
+            <div class="tech-log" style="margin-top: 20px;">
+                <div class="table-header">TRAJECTORY_DIFFERENTIAL_EQUATIONS</div>
+                <div style="padding: 30px; background: #fdfdfd; border: 1px solid #000; text-align: center;">
+                    $$ \frac{d^2\vec{r}}{dt^2} = -\frac{\mu}{|\vec{r}|^3}\vec{r} + \frac{\vec{F}_{thrust}}{m(t)} $$
+                    <p style="font-size: 0.75rem; margin-top: 15px;">SOLVER: ode45 // TOLERANCE: $10^{-6}$</p>
+                </div>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="nasa-footer">
+        <span>AUTHENTICATED: KWANYOUNG PARK // MISSION_CONTROL // 2025</span>
+    </footer>
+
+</body>
+</html>

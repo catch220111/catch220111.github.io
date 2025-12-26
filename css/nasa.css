@@ -1,0 +1,92 @@
+/* =========================================
+   NASA TECHNICAL CATALOGUE STYLE
+   ========================================= */
+
+:root {
+    --nasa-red: #FC3D21; /* Classic NASA "Worm" Red */
+    --tech-blue: #0B3D91; /* Technical Blue */
+    --stark-white: #FFFFFF;
+    --gray-bg: #E0E0E0;
+    --ink-black: #000000;
+}
+
+body {
+    background-color: var(--gray-bg);
+    color: var(--ink-black);
+    font-family: "Helvetica", "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header: Formal Agency Style */
+.nasa-header {
+    background: var(--ink-black);
+    color: var(--stark-white);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--nasa-red);
+}
+
+.agency-tag { font-size: 0.6rem; letter-spacing: 2px; }
+.report-title { margin: 0; font-size: 1.2rem; font-weight: 900; }
+.box-tag { border: 1px solid white; padding: 5px 10px; font-family: monospace; font-size: 0.7rem; }
+
+/* Grid Container */
+.catalogue-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border: 1px solid black;
+}
+
+/* Technical Blocks */
+.subsystem-block {
+    margin-bottom: 60px;
+    border-top: 2px solid black;
+}
+
+.block-label {
+    background: black;
+    color: white;
+    display: inline-block;
+    padding: 4px 15px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.grid-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Images: Labeled as Figures */
+.image-frame { border: 1px solid #ccc; padding: 10px; }
+.image-frame img, .full-artifact img { width: 100%; display: block; }
+.figure-caption { display: block; font-size: 0.65rem; font-weight: bold; margin-top: 10px; color: var(--tech-blue); }
+
+/* Typography */
+.key { font-family: monospace; font-weight: bold; color: var(--nasa-red); }
+.log-entry { margin-bottom: 5px; font-size: 0.8rem; }
+.summary-text { font-size: 0.9rem; line-height: 1.5; border-top: 1px solid #eee; padding-top: 15px; }
+
+/* Status Alerts: Technical Boxes */
+.status-alert { border: 2px solid var(--nasa-red); padding: 20px; }
+.query-text { font-size: 1.5rem; text-transform: uppercase; margin-top: 0; }
+.analysis-column { column-count: 2; column-gap: 30px; font-size: 0.85rem; }
+
+/* Tables: System Logs */
+.side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+table { width: 100%; border-collapse: collapse; font-family: monospace; font-size: 0.75rem; }
+td { border-bottom: 1px solid black; padding: 10px 0; }
+.table-header { background: #eee; padding: 5px; font-weight: bold; }
+
+.signature { font-family: monospace; font-size: 0.65rem; margin-top: 50px; border-top: 1px solid black; }
+
+/* Footer */
+.nasa-footer { text-align: center; padding: 40px; font-size: 0.6rem; color: #777; font-family: monospace; }
