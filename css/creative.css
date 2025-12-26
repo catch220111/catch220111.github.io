@@ -166,3 +166,31 @@ body {
 @media (max-width: 900px) {
     .index-container { grid-template-columns: 1fr; gap: 30px; }
 }
+
+/* Center-Focus Utility */
+.center-box {
+    grid-column: 2 / span 10; /* Occupies the center 10 columns */
+    margin: 40px 0;
+}
+
+@media (max-width: 900px) {
+    .center-box {
+        grid-column: span 12; /* Full width on mobile */
+    }
+}
+
+/* Constrains tall vertical images */
+.vertical-artifact {
+    grid-column: span 5; /* Reduced from 8 or 10 */
+    grid-column-start: 4; /* Centers it in the 12-column grid */
+    max-height: 70vh; /* Limits height to 70% of the screen */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vertical-artifact img {
+    height: 100%;
+    width: auto; /* Keeps the proportions correct */
+    object-fit: contain;
+}
