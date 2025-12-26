@@ -127,3 +127,42 @@ body {
     color: var(--swiss-orange); /* Turns orange when you hover over the signal name */
     text-decoration: underline;
 }
+
+
+/* Container to hold both the description and the links */
+.index-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Splits the space 50/50 */
+    gap: 60px;
+    border-top: 2px solid var(--ink-black);
+    padding-top: 30px;
+    margin-top: 20px;
+}
+
+.index-description p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 400px;
+}
+
+.index-description strong {
+    color: var(--swiss-orange); /* Uses your high-saturation orange */
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Adjust your existing editorial-index to remove the border since it's on the container now */
+.editorial-index {
+    display: flex;
+    gap: 40px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: none; /* Removed */
+}
+
+/* Responsive fix for mobile */
+@media (max-width: 900px) {
+    .index-container { grid-template-columns: 1fr; gap: 30px; }
+}
