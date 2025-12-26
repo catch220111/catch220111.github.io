@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Mission Control | Kwanyoung Park</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/svg/favicon.svg">
+</head>
+<body class="starfield"> <header>
+        <h1>Mission Control</h1>
+        <p style="color: var(--nebula-blue); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">
+            Communication Hub & Professional Networking
+        </p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Return to Base</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="max-width: 700px; margin: 0 auto; padding: 40px 20px;">
+        <section id="context">
+            <h2>Establishing Contact</h2>
+            <p>
+                In astronautics, <strong>Mission Control</strong> is the central hub that manages communication between the ground and the spacecraft. 
+            </p>
+            <p>
+                On this site, this page serves as my direct line for professional inquiries, project collaborations, or engineering discussions. Whether you are looking to discuss orbital mechanics or just want to say hello, the signal is open.
+            </p>
+        </section>
+
+        <div class="contact-card">
+            <form action="https://formspree.io/f/mzdbbbep" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Identity (Name)</label>
+                    <input type="text" id="name" name="name" placeholder="Full Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Return Frequency (Email)</label>
+                    <input type="email" id="email" name="_replyto" placeholder="email@address.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Transmission Details</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+                </div>
+
+                <button type="submit" class="download-btn">Initiate Transmission</button>
+                <input type="hidden" name="_next" value="https://catch220111.github.io/success.html">
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Kwanyoung Park. Signal Encrypted.</p>
+    </footer>
+
+    <script>
+        // Keeping your custom success redirection
+        const contactForm = document.querySelector('form');
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = new FormData(contactForm);
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (response.ok) { window.location.href = "success.html"; } 
+                else { alert("Transmission Failed: Signal weak."); }
+            } catch (error) { alert("Transmission Failed: Connection lost."); }
+        });
+    </script>
+</body>
+</html>
