@@ -16,10 +16,11 @@ body {
 
 /* The Masonry Container */
 .masonry-container {
-    column-count: 4; /* Number of columns */
-    column-gap: 20px;
-    max-width: 1400px;
+    column-count: 5; /* Increasing to 5 columns makes each individual image smaller/narrower */
+    column-gap: 15px;
+    max-width: 1600px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 /* Responsive columns for mobile/tablet */
@@ -29,22 +30,24 @@ body {
 
 /* The Artifact Block */
 .neon-block {
-    break-inside: avoid; /* Prevents images from splitting between columns */
-    margin-bottom: 20px;
+    break-inside: avoid;
+    margin-bottom: 15px;
     background: #050505;
-    border: 2px solid var(--neon-orange);
+    border: 1px solid var(--neon-orange); /* Thinner border looks cleaner at smaller scales */
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
-    display: inline-block; /* Essential for masonry flow */
+    display: inline-block;
     width: 100%;
 }
 
 .neon-block img {
     width: 100%;
-    height: auto; /* Keeps original photo shape */
+    height: auto;
+    /* Limit the height so vertical photos don't become "infinite" */
+    max-height: 500px; 
+    object-fit: cover; /* This crops just the very long ones to stay within 500px */
     display: block;
-    filter: grayscale(100%); /* Optional: Starts B&W for that high-art look */
+    filter: grayscale(100%);
     opacity: 0.7;
     transition: all 0.4s ease;
 }
