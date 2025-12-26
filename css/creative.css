@@ -1,81 +1,57 @@
 /* =========================================
-   Street Neon: Masonry Archive
+   Swiss Editorial: Classic Archive
    ========================================= */
 :root {
-    --neon-orange: #FF5F1F;
-    --flicker-glow: 0 0 15px #FF5F1F;
+    --swiss-orange: #FF4500; /* High saturation classic orange */
+    --paper-white: #F4F4F4;  /* Off-white "Old Paper" feel */
+    --ink-black: #1A1A1A;
 }
 
 body {
-    background-color: #000;
-    color: var(--neon-orange);
-    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--paper-white);
+    color: var(--ink-black);
+    font-family: 'Inter', -apple-system, sans-serif; /* Clean Swiss typography */
     margin: 0;
-    padding: 20px;
+    padding: 60px 20px;
+    line-height: 1.4;
 }
 
-/* The Masonry Container */
-.masonry-container {
-    column-count: 5; /* Increasing to 5 columns makes each individual image smaller/narrower */
-    column-gap: 15px;
-    max-width: 1600px;
+/* The Grid: No more "Bento Boxes" */
+.editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 12-column Swiss grid */
+    gap: 20px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 20px;
 }
 
-/* Responsive columns for mobile/tablet */
-@media (max-width: 1000px) { .masonry-container { column-count: 3; } }
-@media (max-width: 700px) { .masonry-container { column-count: 2; } }
-@media (max-width: 400px) { .masonry-container { column-count: 1; } }
-
-/* The Artifact Block */
-.neon-block {
-    break-inside: avoid;
-    margin-bottom: 15px;
-    background: #050505;
-    border: 1px solid var(--neon-orange); /* Thinner border looks cleaner at smaller scales */
+/* The Image Block: Clean and simple */
+.artifact-box {
+    margin-bottom: 40px;
     position: relative;
-    overflow: hidden;
-    display: inline-block;
-    width: 100%;
+    border-top: 1px solid var(--ink-black); /* Technical separator line */
+    padding-top: 10px;
 }
 
-.neon-block img {
+.artifact-box img {
     width: 100%;
     height: auto;
-    /* Limit the height so vertical photos don't become "infinite" */
-    max-height: 500px; 
-    object-fit: cover; /* This crops just the very long ones to stay within 500px */
     display: block;
-    filter: grayscale(100%);
-    opacity: 0.7;
-    transition: all 0.4s ease;
+    filter: grayscale(0%); /* No more B&W, let the colors pop */
 }
 
-.neon-block:hover {
-    box-shadow: var(--flicker-glow);
-    transform: scale(1.02);
-}
-
-.neon-block:hover img {
-    filter: grayscale(0%); /* Flickers into color on hover */
-    opacity: 1;
-}
-
-.label-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: var(--neon-orange);
-    color: #000;
-    font-size: 0.6rem;
-    padding: 2px 6px;
+/* Metadata Text */
+.meta-label {
+    font-size: 0.75rem;
+    font-weight: 900;
     text-transform: uppercase;
-    font-weight: bold;
+    color: var(--swiss-orange); /* High-saturated orange accents */
+    letter-spacing: 1px;
+    margin-top: 8px;
 }
 
-/* For your quotes */
-.centered-content {
-    padding: 40px 20px;
-    text-align: center;
-}
+/* Layout Variations: Telling the boxes where to go */
+.span-6 { grid-column: span 6; }
+.span-4 { grid-column: span 4; }
+.span-8 { grid-column: span 8; }
+.offset-2 { grid-column-start: 3; }
