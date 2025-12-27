@@ -194,3 +194,8 @@ body {
     width: auto; /* Keeps the proportions correct */
     object-fit: contain;
 }
+
+.meta-label a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
