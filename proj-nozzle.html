@@ -43,9 +43,10 @@
         <section>
             <h2>Overview</h2>
             <p>
-                Back in 2022, as a 10th-grade researcher, I designed and executed a study to analyze how the exit angle of a de Laval
+                Back in 2022, as a 10th-grade researcher, I designed and executed a study to analyze how the exit angle
+                of a de Laval
                 nozzle affects the conversion of thermal energy into kinetic thrust. This project required
-                building a custom thrust-testing stand from scratch and developing a C++ numerical model to bridge the
+                building a custom thrust-testing stand from scratch and developing an Arduino logic to bridge the
                 gap between theoretical fluid dynamics and empirical data.
             </p>
             <div style="display: flex; gap: 10px; margin-top: 15px;">
@@ -82,7 +83,8 @@
                 <div class="grid-item">
                     <img src="assets/jpeg/proj-nozzle-aluminium-cad.jpeg" alt="Aluminum Frame CAD">
                     <p class="caption"><strong>Structural Design:</strong> CAD modeling of the 240mm aluminum profile
-                        test stand, ensuring precise alignment for vertical thrust vectoring.</p>
+                        test stand, ensuring precise alignment for vertical thrust vectoring and stable load cell
+                        readings.</p>
                 </div>
 
                 <div class="grid-item">
@@ -106,7 +108,8 @@
                 <div class="grid-item">
                     <img src="assets/jpeg/proj-nozzle-fire-site.jpeg" alt="Static Fire Lab Setup">
                     <p class="caption"><strong>Static Fire Operations:</strong> The final integrated assembly at the lab
-                        bench prior to ignition for independent thrust variable testing.</p>
+                        bench prior to ignition for independent thrust variable testing. The attempt of failed nichrome
+                        wire E-match can be noticed.</p>
                 </div>
 
             </div>
@@ -118,7 +121,7 @@
             <div class="project-item">
                 <h3>1. High-Temperature Material Failure</h3>
                 <p>
-                    Initial tests used PLA 3D-printed nozzles which would deform under the extreme heat of KNSB
+                    Initial tests used PLA 3D-printed nozzles which would deform under the heat of KNSB
                     combustion.
                 </p>
                 <p>
@@ -131,7 +134,7 @@
             <div class="project-item">
                 <h3>2. Numerical Precision & Latency</h3>
                 <p>
-                    The initial C++ code and Load Cell setup suffered from signal noise and measurement
+                    The initial Arudio and Load Cell setup suffered from signal noise and measurement
                     latency, making it difficult to capture the exact peak of the thrust curve.
                 </p>
 
@@ -148,21 +151,41 @@
                     coefficient of $-0.98$ for thrust efficiency.
                 </p>
             </div>
+
+            <div class="project-item">
+                <h3>3. Ignition & Initial Launch</h3>
+                <p>
+                    The primary electronic ignition system (E-Match) failed to initiate the KNSB grain despite a nominal
+                    27V power supply.
+                    The root cause is currently <strong>unidentified</strong>; potential factors include thermal
+                    dissipation limits or chemical compatibility between the E-Match pyrogen and the propellant binder.
+                </p>
+
+                <p>
+                    <strong>Mitigation:</strong> To bypass the electrical failure, a <strong>secondary powder
+                        train</strong> composed of crushed KNSB was manually established. This allowed for thermal
+                    propagation into the combustion chamber via the nozzle throat.
+                    Designing a remote-triggered ignition system with onboard telemetry to isolate electrical impedance
+                    vs. chemical initiation failure would be helpful to identify the source of failure.
+                </p>
+            </div>
         </section>
 
         <section>
             <h2>Reflections & Modern Re-Analysis</h2>
             <div class="exp-card">
                 <ul>
-                    <li><strong>Historical Context:</strong> This project taught me that engineering is a compromise
+                    <li><strong>Historical Context:</strong> This is the first project that I started from scratch. This
+                        project taught me that engineering is a compromise
                         between parameters like weight, mechanical strength, and performance.</li>
                     <li><strong>The Lesson of 15°:</strong> My results corroborated professional findings that exit
                         angles near \(15^{\circ}\) optimize the conversion of subsonic to supersonic flow while
                         minimizing turbulence.</li>
-                    <li><strong>Current Goal:</strong> I am currently re-processing this 2022 dataset using
-                        <strong>Savitzky-Golay Filter</strong> to replace the original linear approximations.
+                    <li><strong>Current Goal:</strong> Previously, I only processed data with medium values and line of
+                        best fit. I am currently re-processing this 2022 dataset using
+                        <strong>Savitzky-Golay Filter</strong> to replace the original linear approximations. Version 2026 coming up soon!
                     </li>
-                    <li><strong>Growth:</strong> Moving from 10th-grade "basic" C++ to my current work at <strong>USC
+                    <li><strong>Growth:</strong> Moving from 10th-grade "basic" Excel data processing to my current work at <strong>USC
                             RPL</strong> reflects a shift from empirical "guessing" to high-fidelity numerical
                         simulation.</li>
                 </ul>
