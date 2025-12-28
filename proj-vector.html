@@ -48,14 +48,15 @@
             </p>
             <hr>
             <p>
-                Project VECTOR involved the development of a real-time inertial navigation system (INS) designed to
-                estimate the orientation and position of a 9-DOF flight controller. I oversaw the software architecture
-                and the implementation of noise-mitigation protocols.
+                As part of ASTE101's final project, students were given a RaspberryPi Zero module with a BerryIMU
+                attached to it. The project involved the development of a real-time inertial navigation system (INS)
+                designed to estimate the orientation and position of a 9-DOF flight controller. I oversaw the process
+                and designed the software architecture as well as the implementation of noise-mitigation protocols.
             </p>
         </section>
 
         <section>
-            <h3>The Navigation Stack</h3>
+            <h2>The Navigation Stack</h2>
             <div class="exp-card">
                 <ul>
                     <li><strong>Orientation Filter:</strong> Deployed a Complementary Filter to fuse high-frequency
@@ -72,21 +73,66 @@
             </div>
         </section>
 
-        <section class="code-module">
-            <div class="table-header">BLOCK_02: COMPLEMENTARY_FILTER_LOGIC</div>
-            <pre style="background: #000000; padding: 20px; border: 1px solid var(--ink-black); overflow-x: auto;">
+        <section>
+            <h2>Logic Module</h2>
+            <section class="code-module">
+                <div class="table-header">COMPLEMENTARY_FILTER_LOGIC</div>
+                <pre style="background: #000000; padding: 20px; border: 1px solid var(--ink-black); overflow-x: auto;">
         <code style="font-family: monospace; font-size: 0.8rem; line-height: 1.5;">
         # [V&V] Fusing high-freq gyro with low-freq acc references
-        # Alpha = 0.75 for dynamic response
+        # Alpha = 0.75 for coordinate finder, 0.98 for navigation
 
         roll  = ALPHA * (roll + gx * dt) + (1 - ALPHA) * roll_acc
         pitch = ALPHA * (pitch + gy * dt) + (1 - ALPHA) * pitch_acc
         yaw   = ALPHA * (yaw + gz * dt) + (1 - ALPHA) * yaw_mag
         </code>
             </pre>
+            </section>
+
+
+            <section class="code-module" style="margin-top: 40px;">
+                <div class="table-header">COORDINATE_TRANSFORMATION (DCM)</div>
+                <pre style="background: #000000; padding: 20px; border: 1px solid var(--ink-black); overflow-x: auto;">
+        <code style="font-family: monospace; font-size: 0.8rem; line-height: 1.5;">
+        # [V&V] BODY-TO-WORLD FRAME ROTATION
+        # Translating IMU orientation into North-East-Down (NED) world frame
+
+        # Constructing Rotation Matrix (R) using Yaw, Pitch, Roll
+        R = Rz(yaw) @ Ry(pitch) @ Rx(roll)
+
+        # Transforming body acceleration to world frame and subtracting gravity
+        acc_world = R @ np.array([ax_m, ay_m, az_m]) - gravity
+        </code>
+            </pre>
+                <div class="tech-log" style="font-size: 0.75rem; line-height: 1.5; margin-top: 10px;">
+                    <p><strong>INTENT:</strong> Resolves the orientation of the vehicle relative to Earth's gravity
+                        vector,
+                        allowing for accurate trajectory mapping in three dimensions.</p>
+                </div>
+            </section>
+
+            <section class="code-module" style="margin-top: 40px;">
+                <div class="table-header">DRIFT_MITIGATION_PROTOCOLS</div>
+                <pre style="background: #000000; padding: 20px; border: 1px solid var(--ink-black); overflow-x: auto;">
+            <code style="font-family: monospace; font-size: 0.8rem; line-height: 1.5;">
+            # [V&V] NOISE_MITIGATION & POSITION_STABILIZATION
+
+            # 01: ACCEL_DEADZONE - Filter low-level vibrational noise
+            if np.linalg.norm(acc_world) < 0.15:
+            acc_world = np.zeros(3)
+
+            # 02: VELOCITY_DECAY - Bleed off integration errors to prevent divergence
+            vel_world = (vel_world + acc_world * dt) * 0.98
+            pos_world = pos_world + vel_world * dt
+        </code>
+            </pre>
+                <div class="tech-log" style="font-size: 0.75rem; line-height: 1.5; margin-top: 10px;">
+                    <p><strong>INTENT:</strong> Implements a noise-floor threshold and a decay constant to counteract
+                        the
+                        "random walk" inherent in double-integration of IMU data.</p>
+                </div>
+            </section>
         </section>
-
-
         <section id="gallery">
             <h3>Telemetry & Hardware</h3>
             <div class="engineering-grid">
