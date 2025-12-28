@@ -32,7 +32,7 @@
 
     <main>
         <div class="project-hero">
-            <h1>GNC and Navigation</h1>
+            <h1>RaspberryPi GNC and Navigation</h1>
             <p class="subtitle">Inertial State Estimation & 9-DOF Sensor Fusion</p>
             <div class="meta">
                 <span>Tools: RaspberryPi, Python</span>
@@ -54,22 +54,27 @@
             </p>
         </section>
 
-        <section id="technical-analysis">
+        <section>
             <h3>The Navigation Stack</h3>
-            <ul>
-                <li><strong>Orientation Filter:</strong> Deployed a Complementary Filter to fuse high-frequency Angular
-                    Velocity ($\omega$) with low-frequency Accelerometer/Magnetometer references.</li>
-                <li><strong>Dynamic Rotation:</strong> Calculated a Direction Cosine Matrix (DCM) to rotate body-fixed
-                    acceleration vectors into the North-East-Down (NED) world frame.</li>
-                <li><strong>Drift Mitigation:</strong> Engineered a computational failsafe using an acceleration
-                    deadzone ($0.15 \, m/s^2$) and velocity decay constant ($0.98$) to stabilize the integration loop.
-                </li>
-            </ul>
+            <div class="exp-card">
+                <ul>
+                    <li><strong>Orientation Filter:</strong> Deployed a Complementary Filter to fuse high-frequency
+                        Angular
+                        Velocity ($\omega$) with low-frequency Accelerometer/Magnetometer references.</li>
+                    <li><strong>Dynamic Rotation:</strong> Calculated a Direction Cosine Matrix (DCM) to rotate
+                        body-fixed
+                        acceleration vectors into the North-East-Down (NED) world frame.</li>
+                    <li><strong>Drift Mitigation:</strong> Engineered a computational failsafe using an acceleration
+                        deadzone ($0.15 \, m/s^2$) and velocity decay constant ($0.98$) to stabilize the integration
+                        loop.
+                    </li>
+                </ul>
+            </div>
         </section>
 
         <section class="code-module">
             <div class="table-header">BLOCK_02: COMPLEMENTARY_FILTER_LOGIC</div>
-            <pre style="background: #f4f4f4; padding: 20px; border: 1px solid var(--ink-black); overflow-x: auto;">
+            <pre style="background: #000000; padding: 20px; border: 1px solid var(--ink-black); overflow-x: auto;">
         <code style="font-family: monospace; font-size: 0.8rem; line-height: 1.5;">
         # [V&V] Fusing high-freq gyro with low-freq acc references
         # Alpha = 0.75 for dynamic response
@@ -82,10 +87,11 @@
         </section>
 
 
-        <section id="mission-artifacts">
+        <section id="gallery">
             <h3>Telemetry & Hardware</h3>
-            <div class="project-grid">
-                <div class="artifact">
+            <div class="engineering-grid">
+
+                <div class="grid-item">
                     <img src="assets/jpeg/berryimuzero.jpeg" alt="RaspberryPi Zero with IMU">
                     <p class="caption">Fig 1: Integrated IMU and Raspberry Pi hardware stack.</p>
                 </div>
