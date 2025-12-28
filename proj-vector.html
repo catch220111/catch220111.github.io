@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project VECTOR | Kwanyoung Park</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/svg/favicon.svg">
+</head>
+<body>
+    <header>
+        <h1>Project VECTOR</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="proj-nozzle.html">Propulsion</a></li>
+                <li><a href="proj-nbody.html">N-Body Sim</a></li>
+                <li><a href="telemetry.html" class="nav-creative">TELEMETRY</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="project-header">
+            <h2>Inertial State Estimation & 9-DOF Sensor Fusion</h2>
+            <p class="meta-data"><strong>ROLE:</strong> Team Lead (Team 3) | <strong>TERM:</strong> Fall 2025 | <strong>INSTITUTION:</strong> USC Astronautics</p>
+            <hr>
+            <p>
+                Project VECTOR involved the development of a real-time inertial navigation system (INS) designed to estimate the orientation and position of a 9-DOF flight controller. As Team Lead, I oversaw the software architecture and the implementation of noise-mitigation protocols.
+            </p>
+        </section>
+
+        <section id="technical-analysis">
+            <h3>The Navigation Stack</h3>
+            <ul>
+                <li><strong>Orientation Filter:</strong> Deployed a Complementary Filter to fuse high-frequency Angular Velocity ($\omega$) with low-frequency Accelerometer/Magnetometer references.</li>
+                <li><strong>Dynamic Rotation:</strong> Calculated a Direction Cosine Matrix (DCM) to rotate body-fixed acceleration vectors into the North-East-Down (NED) world frame.</li>
+                <li><strong>Drift Mitigation:</strong> Engineered a computational failsafe using an acceleration deadzone ($0.15 \, m/s^2$) and velocity decay constant ($0.98$) to stabilize the integration loop.</li>
+            </ul>
+        </section>
+
+        
+
+        <section id="mission-artifacts">
+            <h3>Telemetry & Hardware</h3>
+            <div class="project-grid">
+                <div class="artifact">
+                    <img src="assets/jpeg/vector-hardware.jpeg" alt="9-DOF Sensor Hardware Setup">
+                    <p class="caption">Fig 1: Integrated IMU and Raspberry Pi hardware stack.</p>
+                </div>
+                <div class="artifact">
+                    <img src="assets/jpeg/vector-telemetry.jpeg" alt="Pitch and Roll Stabilization Plots">
+                    <p class="caption">Fig 2: Real-time attitude estimation showing minimized gyro drift.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="post-mission">
+            <h3>Post-Mission Analysis</h3>
+            <p>
+                By applying a customized alpha coefficient ($\alpha=0.75$), the system successfully resolved attitude within a 2.5% error margin during dynamic testing. This project served as a foundational proof-of-concept for autonomous guidance logic in amateur rocketry.
+            </p>
+            <div class="cta-container">
+                <a href="assets/pdf/ASTE101_Project2_Team3.pdf" target="_blank" class="download-btn">Download Technical Report (PDF)</a>
+                <a href="verify.html" class="read-more">View V&V Archive &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Kwanyoung Park. Data Validated for Flight.</p>
+    </footer>
+</body>
+</html>
