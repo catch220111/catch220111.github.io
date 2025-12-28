@@ -164,33 +164,24 @@ nav a:hover {
    4. Hero Section (Home Page)
    ========================================= */
 .hero-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 40px;
-    margin: 40px 0;
+    display: flex;             /* Establishes the side-by-side layout */
+    align-items: flex-start;   /* Aligns the top of the text and image perfectly */
+    gap: 50px;                 /* Creates professional spacing between text and photo */
+    margin-bottom: 80px;       /* Adds space before the next section */
     border-bottom: 1px solid var(--slate-gray);
     padding-bottom: 40px;
 }
 
 #about {
-    flex: 2;
-    min-width: 300px;
-}
-
-#about h2 {
-    margin-top: 0;
-    color: #ffffff;
+    flex: 1;                   /* Allows the text section to take up the remaining space */
 }
 
 .profile-photo {
-    flex: 1;
-    max-width: 250px;
-    width: 100%;
+    flex-shrink: 0;            /* Prevents the image from being squeezed */
+    width: 280px;              /* Standard professional width */
     height: auto;
-    border: 2px solid #333;
-    border-radius: 4px;
+    border-radius: 8px;        /* Maintains your clean aesthetic */
+    border: 1px solid var(--ink-black); /* Optional: adds a technical border */
 }
 
 /* =========================================
