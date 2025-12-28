@@ -1,56 +1,90 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project VECTOR | Kwanyoung Park</title>
+    <title>Project Vector | Kwanyoung Park</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="assets/svg/favicon.svg">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
+
 <body>
-    <header>
-        <h1>Project VECTOR</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="proj-nozzle.html">Propulsion</a></li>
-                <li><a href="proj-nbody.html">N-Body Sim</a></li>
-                <li><a href="telemetry.html" class="nav-creative">TELEMETRY</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="project-hero">
+        <h1>GNC and Navigation</h1>
+        <p class="subtitle">Inertial State Estimation & 9-DOF Sensor Fusion</p>
+        <div class="meta">
+            <span>Tools: python, RaspberryPi, BerryIMU-integrated sensors</span>
+            <span>Category: School Project</span>
+            <span>Role: Team Lead</span>
+            <span>Instituition: USC Astronautical Engineering (ASTE101)</span>
+            <span>Term: Fall 2025</span>
+        </div>
+    </div>
 
     <main>
         <section id="project-header">
             <h2>Inertial State Estimation & 9-DOF Sensor Fusion</h2>
-            <p class="meta-data"><strong>ROLE:</strong> Team Lead (Team 3) | <strong>TERM:</strong> Fall 2025 | <strong>INSTITUTION:</strong> USC Astronautics</p>
+            <p class="meta-data"><strong>ROLE:</strong> Team Lead (Team 3) | <strong>TERM:</strong> Fall 2025 |
+                <strong>INSTITUTION:</strong> USC Astronautics
+            </p>
             <hr>
             <p>
-                Project VECTOR involved the development of a real-time inertial navigation system (INS) designed to estimate the orientation and position of a 9-DOF flight controller. As Team Lead, I oversaw the software architecture and the implementation of noise-mitigation protocols.
+                Project VECTOR involved the development of a real-time inertial navigation system (INS) designed to
+                estimate the orientation and position of a 9-DOF flight controller. I oversaw the software architecture
+                and the implementation of noise-mitigation protocols.
             </p>
         </section>
 
         <section id="technical-analysis">
             <h3>The Navigation Stack</h3>
             <ul>
-                <li><strong>Orientation Filter:</strong> Deployed a Complementary Filter to fuse high-frequency Angular Velocity ($\omega$) with low-frequency Accelerometer/Magnetometer references.</li>
-                <li><strong>Dynamic Rotation:</strong> Calculated a Direction Cosine Matrix (DCM) to rotate body-fixed acceleration vectors into the North-East-Down (NED) world frame.</li>
-                <li><strong>Drift Mitigation:</strong> Engineered a computational failsafe using an acceleration deadzone ($0.15 \, m/s^2$) and velocity decay constant ($0.98$) to stabilize the integration loop.</li>
+                <li><strong>Orientation Filter:</strong> Deployed a Complementary Filter to fuse high-frequency Angular
+                    Velocity ($\omega$) with low-frequency Accelerometer/Magnetometer references.</li>
+                <li><strong>Dynamic Rotation:</strong> Calculated a Direction Cosine Matrix (DCM) to rotate body-fixed
+                    acceleration vectors into the North-East-Down (NED) world frame.</li>
+                <li><strong>Drift Mitigation:</strong> Engineered a computational failsafe using an acceleration
+                    deadzone ($0.15 \, m/s^2$) and velocity decay constant ($0.98$) to stabilize the integration loop.
+                </li>
             </ul>
         </section>
 
-        
+        <section class="code-module">
+            <div class="table-header">BLOCK_02: COMPLEMENTARY_FILTER_LOGIC</div>
+            <pre style="background: #f4f4f4; padding: 20px; border: 1px solid var(--ink-black); overflow-x: auto;">
+        <code style="font-family: monospace; font-size: 0.8rem; line-height: 1.5;">
+        # [V&V] Fusing high-freq gyro with low-freq acc references
+        # Alpha = 0.75 for dynamic response
+
+        roll  = ALPHA * (roll + gx * dt) + (1 - ALPHA) * roll_acc
+        pitch = ALPHA * (pitch + gy * dt) + (1 - ALPHA) * pitch_acc
+        yaw   = ALPHA * (yaw + gz * dt) + (1 - ALPHA) * yaw_mag
+        </code>
+            </pre>
+        </section>
+
 
         <section id="mission-artifacts">
             <h3>Telemetry & Hardware</h3>
             <div class="project-grid">
                 <div class="artifact">
-                    <img src="assets/jpeg/vector-hardware.jpeg" alt="9-DOF Sensor Hardware Setup">
+                    <img src="assets/jpeg/berryimuzero.jpeg" alt="RaspberryPi Zero with IMU">
                     <p class="caption">Fig 1: Integrated IMU and Raspberry Pi hardware stack.</p>
-                </div>
-                <div class="artifact">
-                    <img src="assets/jpeg/vector-telemetry.jpeg" alt="Pitch and Roll Stabilization Plots">
-                    <p class="caption">Fig 2: Real-time attitude estimation showing minimized gyro drift.</p>
                 </div>
             </div>
         </section>
@@ -58,17 +92,42 @@
         <section id="post-mission">
             <h3>Post-Mission Analysis</h3>
             <p>
-                By applying a customized alpha coefficient ($\alpha=0.75$), the system successfully resolved attitude within a 2.5% error margin during dynamic testing. This project served as a foundational proof-of-concept for autonomous guidance logic in amateur rocketry.
+                By applying a customized alpha coefficient ($\alpha=0.75$), the system successfully resolved attitude
+                within a 2.5% error margin during dynamic testing. This project served as a foundational
+                proof-of-concept for autonomous guidance logic in amateur rocketry.
             </p>
             <div class="cta-container">
-                <a href="assets/pdf/ASTE101_Project2_Team3.pdf" target="_blank" class="download-btn">Download Technical Report (PDF)</a>
-                <a href="verify.html" class="read-more">View V&V Archive &rarr;</a>
+                <a href="assets/pdf/ASTE101_Project2_Team3.pdf" target="_blank" class="download-btn">Download Technical
+                    Report (PDF)</a>
+                <a href="verify.html" target="_blank" class="download-btn">View V&V Archive &rarr;</a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Kwanyoung Park. Data Validated for Flight.</p>
+        <p>Kwanyoung Park</p>
+        <div class="contact-links">
+            <a href="contact.html" class="footer-link">Email</a>
+            <span class="separator">|</span>
+            <a href="https://www.linkedin.com/in/kwanyoung-park-0bb182383" target="_blank" rel="noopener noreferrer"
+                class="footer-link">LinkedIn</a>
+        </div>
+        <div class="social-links">
+            <a href="https://github.com/catch220111" target="_blank" class="github-link">
+                GitHub Profile
+            </a>
+        </div>
+        <div class="footer-content">
+            <a href="assets/pdf/Kwanyoung_Park_Resume.pdf" download class="download-btn">
+                Download Full Resume (PDF)
+            </a>
+        </div>
+        <p>&copy; 2025 Kwanyoung Park. All rights reserved.</p>
     </footer>
+    <div id="rocket-top" class="rocket-hidden">
+        🚀
+    </div>
+    <script src="js/script.js"></script>
 </body>
+
 </html>
