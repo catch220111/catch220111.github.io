@@ -177,10 +177,17 @@ nav a:hover {
 }
 
 .profile-photo {
-    flex-shrink: 0;            /* Prevents the image from being squeezed */
-    width: 280px;              /* Standard professional width */
+    flex-shrink: 0;
+    width: 280px;
     height: auto;
-    border-radius: 8px;        /* Maintains your clean aesthetic */
+    border-radius: 8px;
+    
+    /* MANUALLY MOVE DOWN: Adjust the 40px value until it lines up perfectly with your text */
+    margin-top: 45px; 
+    
+    /* Alternative method if margin doesn't work: */
+    /* transform: translateY(45px); */
+       /* Maintains your clean aesthetic */
     border: 1px solid var(--ink-black); /* Optional: adds a technical border */
 }
 
