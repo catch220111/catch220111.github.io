@@ -183,7 +183,7 @@ nav a:hover {
     border-radius: 8px;
     
     /* MANUALLY MOVE DOWN: Adjust the 40px value until it lines up perfectly with your text */
-    margin-top: 45px; 
+    margin-top: 55px; 
     
     /* Alternative method if margin doesn't work: */
     /* transform: translateY(45px); */
