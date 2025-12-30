@@ -1,0 +1,124 @@
+/* 1. CORE VARIABLES & RESET */
+:root {
+    --ink-black: #000000;
+    --paper-white: #ffffff;
+    --swiss-orange: #FF4500;   /* Anomaly/Failure */
+    --mission-green: #28A745;  /* Success */
+    --pending-gray: #888888;   /* TBD/Future */
+    --grid-gap: 40px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--paper-white);
+    color: var(--ink-black);
+    font-family: 'Helvetica', 'Arial', sans-serif; /* Professional Sans-Serif */
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 2. THE EDITORIAL GRID (The Margin Fix) */
+.editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px;
+}
+
+/* 3. SUBSYSTEM BLOCKS (The Mission Modules) */
+.subsystem-block {
+    grid-column: span 12;
+    border-top: 2px solid black;
+    margin-bottom: 80px;
+}
+
+/* Uniform Header for every Mission */
+.block-label {
+    background: black;
+    color: white;
+    display: inline-block;
+    padding: 8px 20px;
+    font-size: 0.75rem;
+    font-family: monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* 4. INTERNAL GRID CONTENT */
+.grid-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Narrative (Left) vs Checklist (Right) */
+    gap: 60px;
+    margin-top: 40px;
+}
+
+.data-readout {
+    padding: 30px;
+    border-right: 1px solid var(--ink-black);
+}
+
+.tech-log {
+    padding: 30px;
+    background-color: #fcfcfc;
+}
+
+/* 5. DYNAMIC STATUS STYLING */
+.status-nominal .block-label { background: #28A745; }
+.status-alert .block-label { background: #FF4500; }
+.status-tbd .block-label { background: #ccc; }
+
+.status-nominal { border-color: var(--mission-green); }
+.status-alert { border-color: var(--swiss-orange); }
+.status-tbd { border-color: var(--pending-gray); opacity: 0.6; }
+
+/* 6. TYPOGRAPHY & DATA DATA */
+.meta-label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 8px;
+    display: block;
+}
+
+h3 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.log-entry {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+.key { font-weight: bold; }
+
+/* 7. THE BUTTON */
+.base-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid var(--ink-black);
+    text-decoration: none;
+    color: var(--ink-black);
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+.base-link:hover {
+    background: var(--ink-black);
+    color: var(--paper-white);
+}

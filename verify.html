@@ -3,208 +3,258 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NASA_REPORT // VERIFY_LOG // KWANYOUNG PARK</title>
-    <link rel="stylesheet" href="css/nasa.css">
-    
+    <title>NASA_STANDARDS // V&V_LOG // KWANYOUNG PARK</title>
+    <style>
+        /* 1. THE FOUNDATION: RESET & FONTS */
+        :root {
+            --ink-black: #000000;
+            --paper-white: #ffffff;
+            --nasa-red: #FC3D21;
+            --nominal-green: #28A745;
+            --anomaly-orange: #FF4500;
+            --pending-gray: #ccc;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            /* Gray background to make the 'paper' pop */
+            color: var(--ink-black);
+            font-family: "Helvetica", "Arial", sans-serif;
+            margin: 0;
+            padding: 40px;
+        }
+
+        /* 2. THE PAPER CONTAINER (1200px Fixed) */
+        .technical-document {
+            background: var(--paper-white);
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid var(--ink-black);
+            min-height: 100vh;
+            padding: 80px;
+            /* This creates the consistent document margins */
+        }
+
+        /* 3. THE NASA HEADER */
+        header {
+            border-bottom: 2px solid var(--ink-black);
+            padding-bottom: 40px;
+            margin-bottom: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 0.9;
+            margin: 0;
+        }
+
+        /* 4. MISSION BLOCK STRUCTURE */
+        .mission-module {
+            margin-bottom: 100px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            /* Narrative on left, Checklist on right */
+            gap: 60px;
+        }
+
+        .project-tab {
+            grid-column: span 2;
+            background: var(--ink-black);
+            color: var(--paper-white);
+            padding: 10px 20px;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 30px;
+        }
+
+        /* 5. DATA STYLING */
+        .status-box {
+            border: 2px solid var(--ink-black);
+            padding: 30px;
+            margin: 20px 0;
+            text-transform: uppercase;
+        }
+
+        .checklist {
+            background: #f9f9f9;
+            padding: 30px;
+            border-left: 1px solid var(--ink-black);
+        }
+
+        .log-entry {
+            font-family: monospace;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted #000;
+            padding: 10px 0;
+        }
+
+        /* DYNAMIC STATUS MODIFIERS */
+        .nominal .status-box {
+            border-color: var(--nominal-green);
+            color: var(--nominal-green);
+        }
+
+        .alert .status-box {
+            border-color: var(--anomaly-orange);
+            color: var(--anomaly-orange);
+        }
+
+        .tbd {
+            opacity: 0.4;
+        }
+
+        .meta {
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .base-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: bold;
+            text-decoration: underline;
+            color: var(--ink-black);
+        }
+    </style>
     <script>
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: true
+                processEscapes: true,
+                processEnvironments: true
             },
             options: {
-                processHtmlClass: 'tex2jax_process'
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
             }
         };
     </script>
-
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/mathjax.min.js"></script>
-
-    <style>
-        mjx-container {
-            display: inline-grid !important;
-            margin: 0.2em 0 !important;
-            color: inherit !important;
-        }
-        .tex2jax_process {
-            line-height: 1.6;
-        }
-    </style>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
-<body class="tex2jax_process">
+<body>
 
-    <header class="nasa-header">
-        <div class="header-left">
-            <span class="agency-tag">TECHNICAL ARCHIVE // VERIFICATION & VALIDATION (V&V)</span>
-            <h1 class="report-title">REPORT_ID: V-2025-ARCHIVE</h1>
-        </div>
-        <div class="header-right">
-            <div class="box-tag">LEVEL: TECHNICAL_RECONSTRUCTION</div>
-        </div>
-    </header>
+    <div class="technical-document">
 
-    <main class="catalogue-container">
+        <header>
+            <div>
+                <span class="meta" style="color: var(--nasa-red); font-weight: bold;">STANDARDS_MANUAL // NASA_01</span>
+                <h1>Compliance<br>Ledger</h1>
+            </div>
+            <div style="text-align: right;">
+                <span class="meta">KWANYOUNG PARK</span><br>
+                <span class="meta">2025 // USC_ASTE</span>
+            </div>
+        </header>
 
-        <section class="subsystem-block">
-            <div class="block-label">SUBSYSTEM_01 // STATIC_FIRE_VALIDATION</div>
+        <section class="mission-module nominal">
+            <div class="project-tab">01 // PROJECT_VECTOR // GNC_STABILITY</div>
 
-            <div class="status-alert" style="margin: 20px 0; border: 1px solid var(--ink-black); background: #fdfdfd; padding: 20px;">
-                <p class="meta-label" style="margin-top: 0;">MODULE_01.A // MISSION_DIRECTIVE</p>
-                <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.6; margin-bottom: 0;">
-                    <strong>OBJECTIVE:</strong> Quantify the ballistic performance and total impulse of amateur solid rocket motor (ASRM) configurations.
-                    <br><br>
-                    <strong>PURPOSE:</strong> Validating theoretical thermodynamic models against empirical load-cell data to characterize nozzle expansion efficiency.
+            <div class="narrative">
+                <span class="meta">REQ_ID: GNC-01</span>
+                <div class="status-box">
+                    <h3>STATUS: NOMINAL</h3>
+                </div>
+                <p>Verified 9-DOF fusion stack with < 2.5% yaw drift. Validated body-to-inertial rotation.</p>
+                        <a href="assets/pdf/ASTE101_Project2_Team3.pdf" class="base-link">VIEW_DOSSIER (PDF)</a>
+            </div>
+
+            <div class="checklist">
+                <div class="meta" style="margin-bottom: 20px;">VERIFICATION_MATRIX</div>
+                <div class="log-entry"><span>MATH_VALIDATION</span> <span>[✓]</span></div>
+                <div class="log-entry"><span>HARDWARE_TEST</span> <span>[✓]</span></div>
+                <div class="log-entry"><span>DATA_REVIEW</span> <span>[✓]</span></div>
+            </div>
+        </section>
+
+        <section class="mission-module alert">
+            <div class="project-tab" style="background: var(--anomaly-orange);">02 // PROPULSION // IGNITION_ANOMALY
+            </div>
+
+            <div class="narrative">
+                <span class="meta">REQ_ID: PROP-01</span>
+                <div class="status-box">
+                    <h3>ANOMALY_REPORTED</h3>
+                </div>
+                <p>E-match failure at 27V initiation. Manual powder train bypass successful.</p>
+                <a href="assets/pdf/Kwanyoung_Park_Resume.pdf" class="base-link"
+                    style="color: var(--anomaly-orange);">ANOMALY_LOG (PDF)</a>
+            </div>
+
+            <div class="checklist" style="border-left-color: var(--anomaly-orange);">
+                <div class="meta" style="margin-bottom: 20px;">FAILURE_ANALYSIS</div>
+                <div class="log-entry"><span>PULSE_DETECTION</span> <span>[X]</span></div>
+                <div class="log-entry"><span>THERMAL_TRANS</span> <span>[X]</span></div>
+                <div class="log-entry"><span>FIELD_MITIG</span> <span>[✓]</span></div>
+            </div>
+        </section>
+
+        <section class="mission-module alert">
+            <div class="project-tab">02 // NOZZLE_RESEARCH // PERFORMANCE_VALIDATION</div>
+
+            <div class="narrative">
+                <span class="meta">REQ_ID: PROP-NOZ-01</span>
+                <div class="status-box">
+                    <h3>STATUS: RESEARCH_ANOMALY</h3>
+                </div>
+                <p>
+                    Objective: Validate $I_{sp}$ gains from varying nozzle entrance angles in KNSB solid motors.
+                    Research identified that <strong>cement-nozzle erosion</strong> significantly altered throat area
+                    ($A_t$)
+                    during high-enthalpy phases, deviating from CAD-predicted expansion ratios.
                 </p>
+                <p><strong>MITIGATION:</strong> Implemented Savitzky-Golay filtering in Python to post-process
+                    noisy load-cell telemetry and recover peak thrust trends.</p>
+                <a href="assets/pdf/Rocket Angle and its Thrust.pdf" class="base-link">VIEW_RESEARCH_DOSSIER (PDF)</a>
             </div>
 
-            <div class="grid-content">
-                <div class="image-frame">
-                    <img src="assets/jpeg/proj-nozzle-aluminium-cad.jpeg" alt="Thrust Test Stand">
-                    <span class="figure-caption">FIG 1.1: STATIC THRUST TEST STAND ASSEMBLY</span>
-                </div>
-                <div class="data-readout">
-                    <div class="log-entry"><span class="key">HARDWARE:</span> ALUMINUM PROFILES / LOAD CELL</div>
-                    <div class="log-entry"><span class="key">FIRMWARE:</span> ARDUINO / C++ DATA ACQUISITION</div>
-                    <div class="log-entry"><span class="key">FUEL:</span> KNO3 + SUCROSE (SUGAR_ROCKET)</div>
+            <div class="checklist">
+                <div class="meta" style="margin-bottom: 20px;">RESEARCH_VERIFICATION</div>
+                <div class="log-entry"><span>THERMO_MODELING</span> <span>[✓]</span></div>
+                <div class="log-entry"><span>THROAT_INTEGRITY</span> <span>[X]</span></div>
+                <div class="log-entry"><span>DATA_SMOOTHING</span> <span>[✓]</span></div>
 
-                    <p class="summary-text">
-                        The objective was to quantify <strong>Specific Impulse $I_{sp}$</strong>. Raw data was processed through <strong>MATLAB</strong> for numeric integration.
-                    </p>
-                </div>
-            </div>
-
-            
-
-            <div class="tech-log" style="margin-top: 30px;">
-                <div class="table-header">MEASURED_PERFORMANCE_METRICS</div>
-                <table>
-                    <tr><td>PARAMETER</td><td>SYMBOL</td><td>VALUE (AVG)</td><td>UNITS</td></tr>
-                    <tr><td>PEAK THRUST</td><td>$F_{max}$</td><td>12.4</td><td>NEWTONS</td></tr>
-                    <tr><td>TOTAL IMPULSE</td><td>$I_t$</td><td>18.2</td><td>N·s</td></tr>
-                    <tr><td>SPECIFIC IMPULSE</td><td>$I_{sp}$</td><td>110.5</td><td>SECONDS</td></tr>
-                </table>
-            </div>
-
-            <div class="artifact-box span-12" style="margin-top: 30px; border-top: 1px dashed #000; padding-top: 20px;">
-                <p class="meta-label" style="color: var(--nasa-red);">MODULE_01.B // PMA // SYSTEM_INTEGRITY_REFRACTION</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                    <div class="summary-text" style="font-size: 0.85rem; line-height: 1.6;">
-                        <strong>LIMITATIONS:</strong> Cement nozzle erosion over successive test cycles resulted in slight throat area expansion, affecting the expansion ratio.
+                <div style="margin-top: 20px; font-size: 0.7rem; font-family: monospace;">
+                    <div style="background: #eee; padding: 5px;">MEASURED_PERFORMANCE</div>
+                    <div style="display: flex; justify-content: space-between; padding: 5px 0;">
+                        <span>PEAK_THRUST:</span> <span>12.4 N</span>
                     </div>
-                    <div class="summary-text" style="font-size: 0.85rem; line-height: 1.6; border-left: 1px solid #ddd; padding-left: 20px;">
-                        <strong>FUTURE_ITERATION:</strong> Implementation of graphite or phenolic inserts to maintain constant throat geometry during high-enthalpy combustion.
+                    <div style="display: flex; justify-content: space-between; padding: 5px 0;">
+                        <span>SPECIFIC_IMPULSE:</span> <span>110.5 s</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="subsystem-block">
-            <div class="block-label">SUBSYSTEM_02 // GNC_FLIGHT_LOGIC (PROJECT2.PY)</div>
+        <section class="mission-module tbd">
+            <div class="project-tab" style="background: #ccc;">03 // TVC_GIMBAL // ACTIVE_CONTROL</div>
 
-            <div class="status-alert" style="margin: 20px 0; border: 1px solid var(--ink-black); background: #fdfdfd; padding: 20px;">
-                <p class="meta-label" style="margin-top: 0;">MODULE_02.A // MISSION_DIRECTIVE</p>
-                <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.6; margin-bottom: 0;">
-                    <strong>OBJECTIVE:</strong> Establish stabilized navigation by integrating 9-DOF sensor inputs (ACC/GYR/MAG).
-                    <br><br>
-                    <strong>PURPOSE:</strong> Transform body-frame telemetry into a 3D coordinate frame (NED) to enable autonomous trajectory tracking.
-                </p>
+            <div class="narrative">
+                <span class="meta">REQ_ID: TVC-01</span>
+                <div class="status-box">
+                    <h3>INITIALIZING / TBD</h3>
+                </div>
+                <p>Development of PID-controlled gimbal system for vertical ascent stabilization.</p>
             </div>
 
-            <div class="grid-content">
-                <div class="data-readout">
-                    <p class="meta-label">MODULE_02.B // SIGNAL_PROCESSING_STRATEGY</p>
-                    <p class="summary-text">Fusing high-frequency Gyroscope estimates with low-frequency Accelerometer/Magnetometer references via a <strong>Complementary Filter</strong>.</p>
-                    <div class="log-entry"><span class="key">ALPHA_NAV:</span> 0.75</div>
-                    <div class="log-entry"><span class="key">DECLINATION:</span> 12.3° (LA)</div>
-                </div>
-
-                <div class="tech-log" style="border: 2px solid var(--ink-black); padding: 15px; background: #f9f9f9;">
-                    <div class="table-header">NOISE_MITIGATION_PROTOCOL</div>
-                    <div style="font-family: monospace; font-size: 0.7rem; line-height: 1.4;">
-                        [FILTER_01]: <strong>ACCEL_DEADZONE</strong> (0.15 m/s²) <br>
-                        [FILTER_02]: <strong>VELOCITY_DECAY</strong> (0.98) <br>
-                        &gt;&gt; Mitigates position divergence to infinity.
-                    </div>
-                </div>
-            </div>
-
-            
-
-            <div class="artifact-box span-12" style="margin-top: 40px; border-top: 2px solid var(--ink-black); padding-top: 20px;">
-                <p class="meta-label">MODULE_02.C // CRITICAL_ALGORITHMIC_LOGIC</p>
-                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-bottom: 30px;">
-                    <div class="code-module">
-                        <div class="table-header">BLOCK_01: SENSOR_CALIBRATION</div>
-                        <pre style="font-family: monospace; font-size: 0.7rem; background: #f4f4f4; padding: 15px; border: 1px solid #000;">
-# [V&V] CAPTURING GYRO BIAS & ACCEL SCALE
-for i in range(N):
-    gx, gy, gz = sensors.readGYR()
-    acc_mag = math.sqrt(ax**2 + ay**2 + az**2)
-    acc_sum_norm += acc_mag
-
-acc_scale = 9.81 / (acc_sum_norm / N)
-            </pre>
-                    </div>
-                    <div class="tech-log" style="font-size: 0.75rem; line-height: 1.5;">
-                        <p><strong>INTENT:</strong> Normalizes accelerometer magnitude to Earth-gravity ($9.81 m/s^2$).</p>
-                    </div>
-                </div>
-
-                <div style="background: var(--ink-black); color: white; padding: 20px; text-align: center;">
-                    <a href="https://github.com/your-username/your-repo" style="color: var(--swiss-orange); text-decoration: none; font-weight: bold;">ACCESS FULL SOURCE_CODE &rarr;</a>
-                </div>
-            </div>
-
-            <div class="artifact-box span-12" style="margin-top: 30px; border-top: 1px dashed #000; padding-top: 20px;">
-                <p class="meta-label" style="color: var(--nasa-red);">MODULE_02.D // PMA // SYSTEM_INTEGRITY_REFRACTION</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                    <div class="summary-text" style="font-size: 0.85rem; line-height: 1.6;">
-                        <strong>LIMITATIONS:</strong> Persistent drift during long-duration integration remains a known constraint of the Alpha method.
-                    </div>
-                    <div class="summary-text" style="font-size: 0.85rem; line-height: 1.6; border-left: 1px solid #ddd; padding-left: 20px;">
-                        <strong>FUTURE_ITERATION:</strong> Transition to a <strong>Kalman Filter</strong> for improved stochastic estimation.
-                    </div>
-                </div>
+            <div class="checklist" style="border-left-color: #ccc;">
+                <div class="meta" style="margin-bottom: 20px;">PENDING_TASKS</div>
+                <div class="log-entry"><span>PID_TUNING</span> <span>[ ]</span></div>
+                <div class="log-entry"><span>SERVO_TORQUE</span> <span>[ ]</span></div>
             </div>
         </section>
 
-        <section class="subsystem-block">
-            <div class="block-label">SUBSYSTEM_03 // EMBEDDED_INFRASTRUCTURE (INTEL N100)</div>
-            <div class="status-alert" style="margin: 20px 0; border: 1px solid var(--ink-black); background: #fdfdfd; padding: 20px;">
-                <p class="meta-label" style="margin-top: 0;">03.A // MISSION_DIRECTIVE</p>
-                <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem;">
-                    <strong>OBJECTIVE:</strong> Deploy a secure virtualization environment for engineering simulations.
-                </p>
-            </div>
-            <div class="grid-content">
-                <div class="data-readout">
-                    <div class="log-entry"><span class="key">HYPERVISOR:</span> PROXMOX VE</div>
-                    <div class="log-entry"><span class="key">NETWORKING:</span> TAILSCALE MESH VPN</div>
-                </div>
-                
-            </div>
-        </section>
-
-        <section class="subsystem-block">
-            <div class="block-label">SUBSYSTEM_04 // NUMERICAL_ANALYSIS (MATLAB)</div>
-            <div class="tech-log" style="margin-top: 20px;">
-                <div class="table-header">TRAJECTORY_DIFFERENTIAL_EQUATIONS</div>
-                <div style="padding: 30px; background: #fdfdfd; border: 1px solid #000; text-align: center;">
-                    $$ \frac{d^2\vec{r}}{dt^2} = -\frac{\mu}{|\vec{r}|^3}\vec{r} + \frac{\vec{F}_{thrust}}{m(t)} $$
-                    <p style="font-size: 0.75rem; margin-top: 15px;">SOLVER: ode45 // TOLERANCE: $10^{-6}$</p>
-                </div>
-                
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="nasa-footer">
-        <span>AUTHENTICATED: KWANYOUNG PARK // MISSION_CONTROL // 2025</span>
-    </footer>
+    </div>
 
 </body>
+
 </html>
