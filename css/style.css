@@ -1,7 +1,12 @@
 /* =========================================
    1. Space-Inspired Color Palette & Variables
    ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@500&display=swap');
+
 :root {
+    --font-main: 'Inter', -apple-system, sans-serif;
+    --font-data: 'JetBrains Mono', monospace;
     --deep-space: #0b0d17;
     --star-white: #f8f9fa;
     --nebula-blue: #4db8ff;
@@ -15,26 +20,45 @@
 /* =========================================
    2. Global Styles & Layout Engineering
    ========================================= */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+dt,
+dd,
+blockquote,
+label,
+input,
+textarea,
+button {
+    font-family: var(--font-main);
+    /* 🟢 Replaced Segoe UI globally */
+    letter-spacing: -0.01em;
+    /* 🟢 Optimized Inter letter-spacing */
+}
+
 body {
     background-color: var(--deep-space);
     color: var(--text-main);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     max-width: 900px;
     margin: 0 auto;
-    /* Centers the website container */
     padding: 0 20px;
-    /* Gutter space for mobile */
 }
 
-/* Ensure images inside articles/sections don't overflow */
 img {
     max-width: 100%;
     height: auto;
 }
 
 /* =========================================
-   3. Header & Navigation (UPDATED TO MATCH SCREENSHOT)
+   3. Header & Navigation 
    ========================================= */
 header {
     text-align: center;
@@ -43,26 +67,23 @@ header {
 
 h1 {
     font-size: 2.5rem;
-    letter-spacing: 2px;
+    letter-spacing: -0.02em;
     margin-bottom: 30px;
-    /* Added spacing for the tiered look */
     color: #ffffff;
 }
 
-/* Primary Navigation Level */
 nav ul {
     display: flex;
     justify-content: center;
     list-style-type: none;
     padding: 0;
     gap: 60px;
-    /* Horizontal spacing between Home, Experience, Education */
-    align-items: flex-start;
-    /* Keeps main links on the same horizontal line */
+    align-items: center;
     flex-wrap: wrap;
 }
 
-nav a {
+nav a,
+.drop-btn {
     text-decoration: none;
     color: var(--nebula-blue);
     font-weight: bold;
@@ -70,31 +91,25 @@ nav a {
     font-size: 0.85rem;
     transition: color 0.3s ease;
     position: relative;
-    /* For the animated underline */
 }
 
-/* Nested Sub-Navigation (The Bullet Points under Home) */
+/* Sub-Navigation (Tiered Home Style) */
 .sub-nav {
     display: flex;
     flex-direction: column;
-    /* Vertical stack for Home contents */
     gap: 8px;
     margin-top: 15px;
     padding-left: 15px;
     border-left: 1px solid #333;
-    /* Vertical guide line from screenshot */
     align-items: flex-start;
     list-style-type: disc;
-    /* Enables bullet points */
 }
 
 .sub-nav li {
     font-size: 0.75rem;
     margin-bottom: 2px;
     color: #666;
-    /* Dimmed color for secondary items */
     display: list-item;
-    /* Ensures bullet shows up */
 }
 
 .sub-nav a {
@@ -112,23 +127,53 @@ nav a {
     display: none;
 }
 
-/* Remove underline effect for sub-nav */
+/* Dropdown Logic */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-/* Specific style for the "Back" link on Project Pages */
-header p a {
-    color: #8899a6;
-    text-decoration: none;
-    font-size: 0.85rem;
-    text-transform: uppercase;
+.drop-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--hull-gray);
+    min-width: 140px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding: 15px 0;
+    margin-top: 10px;
+    border: 1px solid var(--slate-gray);
+    border-radius: 4px;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.nav-dropdown:hover .drop-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.drop-menu li {
+    padding: 5px 20px;
+}
+
+.drop-menu a {
+    font-size: 0.8rem;
+    display: block;
     font-weight: bold;
 }
 
-header p a:hover {
-    color: var(--nebula-blue);
-}
-
-/* Underline Hover Effect for Primary Links */
-nav>ul>li>a::after {
+/* Underlines */
+nav>ul>li>a::after,
+.drop-btn::after {
     content: '';
     position: absolute;
     width: 0;
@@ -139,15 +184,24 @@ nav>ul>li>a::after {
     transition: width 0.3s ease;
 }
 
-nav>ul>li>a:hover::after {
+nav>ul>li>a:hover::after,
+.nav-dropdown:hover .drop-btn::after {
     width: 100%;
 }
 
-nav a:hover {
+nav a:hover,
+.drop-btn:hover {
     color: #ffffff;
 }
 
-/* Header Resume Button (Branding Upgrade) */
+nav a.nav-creative {
+    color: #FF4500 !important;
+}
+
+nav a.nav-verify {
+    color: #FFB300 !important;
+}
+
 .nav-resume-btn {
     border: 1px solid var(--nebula-blue);
     padding: 6px 16px;
@@ -160,25 +214,45 @@ nav a:hover {
     color: var(--deep-space) !important;
 }
 
+.nav-resume-btn::after {
+    display: none !important;
+}
+
 /* =========================================
-   4. Hero Section (Home Page)
+   Specific style for the "Back" link on Project Pages
+   ========================================= */
+header p a {
+    font-family: var(--font-main);
+    /* 🟢 Ensures Inter is used for back links */
+    color: #8899a6;
+    /* Standard dimmed color for navigation */
+    text-decoration: none;
+    font-size: 0.8rem;
+    /* Matches your inline style */
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header p a:hover {
+    color: var(--nebula-blue);
+    /* Highlights in blue on hover */
+}
+
+/* =========================================
+   4. Hero Section
    ========================================= */
 .hero-container {
     display: flex;
-    /* Establishes the side-by-side layout */
     align-items: flex-start;
-    /* Aligns the top of the text and image perfectly */
     gap: 50px;
-    /* Creates professional spacing between text and photo */
     margin-bottom: 80px;
-    /* Adds space before the next section */
     border-bottom: 1px solid var(--slate-gray);
     padding-bottom: 40px;
 }
 
 #about {
     flex: 1;
-    /* Allows the text section to take up the remaining space */
 }
 
 .profile-photo {
@@ -186,15 +260,8 @@ nav a:hover {
     width: 280px;
     height: auto;
     border-radius: 8px;
-
-    /* MANUALLY MOVE DOWN: Adjust the 40px value until it lines up perfectly with your text */
     margin-top: 65px;
-
-    /* Alternative method if margin doesn't work: */
-    /* transform: translateY(45px); */
-    /* Maintains your clean aesthetic */
-    border: 1px solid var(--ink-black);
-    /* Optional: adds a technical border */
+    border: 1px solid var(--slate-gray);
 }
 
 /* =========================================
@@ -215,7 +282,6 @@ p {
     color: var(--text-dim);
 }
 
-/* Spacing for Lists inside Project Detail Pages */
 main ul li {
     margin-bottom: 10px;
 }
@@ -225,7 +291,7 @@ main ul li strong {
 }
 
 /* =========================================
-   6. Project Items & Cards (Interactive Polish)
+   6. Project Items & Cards
    ========================================= */
 .project-item {
     margin-bottom: 30px;
@@ -242,7 +308,6 @@ main ul li strong {
     background: #1c2128;
 }
 
-/* Project Thumbnails Layout (New) */
 .project-flex {
     display: flex;
     gap: 25px;
@@ -290,6 +355,8 @@ main ul li strong {
    7. Skills & Definition Lists
    ========================================= */
 dt {
+    font-family: var(--font-data);
+    /* 🟢 Keep JetBrains Mono for data */
     color: var(--nebula-blue);
     font-weight: bold;
     margin-top: 20px;
@@ -306,7 +373,7 @@ dd {
 }
 
 /* =========================================
-   8. Experience Cards (experience.html)
+   8. Experience Cards
    ========================================= */
 .exp-card {
     background: var(--hull-gray);
@@ -419,7 +486,7 @@ footer {
 }
 
 /* =========================================
-   11. Project Deep-Dive Elements (Deep Dive Pages)
+   11. Project Deep-Dive Elements
    ========================================= */
 .project-hero {
     background: linear-gradient(135deg, var(--hull-gray) 0%, var(--deep-space) 100%);
@@ -453,7 +520,6 @@ footer {
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
-    /* 16:9 Aspect Ratio */
     height: 0;
     overflow: hidden;
     max-width: 100%;
@@ -471,7 +537,6 @@ footer {
     height: 100%;
 }
 
-
 /* =========================================
    12. Experience Link Readability Fix
    ========================================= */
@@ -480,7 +545,7 @@ footer {
     color: var(--nebula-blue) !important;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease, padding-left 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .exp-card a:hover,
@@ -527,7 +592,6 @@ footer {
     line-height: 1.4;
 }
 
-
 /* =========================================
    14. Rocket "Scroll to Top" Styles
    ========================================= */
@@ -542,20 +606,17 @@ footer {
     user-select: none;
 }
 
-/* Hidden state: slightly lower and invisible */
 .rocket-hidden {
     opacity: 0;
     transform: translateY(50px);
     pointer-events: none;
 }
 
-/* Visible state */
 .rocket-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Launch Animation: Rocket flies up the screen */
 .rocket-launch {
     transform: translateY(-100vh) !important;
     transition: transform 0.8s cubic-bezier(.47, 0, .74, .71) !important;
@@ -564,7 +625,6 @@ footer {
 /* =========================================
    15. Unified Education Logo Styling
    ========================================= */
-/* Target both the SVG (vector) and JPEG (raster) logos with the same rules */
 .edu-logo-vector,
 .edu-logo-raster {
     width: 45px !important;
@@ -578,10 +638,6 @@ footer {
     padding: 4px;
     display: block;
     box-sizing: border-box;
-    /* 🟢 Prevents padding from making JPEGs look bigger */
-
-    /* 🟢 Keeps the Goyang-si school JPEGs sharp and clear */
-    image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
 
@@ -598,7 +654,6 @@ footer {
    ========================================= */
 .log-container {
     border-left: 1px solid #333;
-    /* Matches your sub-nav style */
     padding-left: 20px;
     margin-left: 10px;
 }
@@ -608,7 +663,6 @@ footer {
     position: relative;
 }
 
-/* The "Dot" on the timeline */
 .log-entry::before {
     content: '';
     position: absolute;
@@ -617,17 +671,15 @@ footer {
     width: 8px;
     height: 8px;
     background-color: var(--nebula-blue);
-    /* */
     border-radius: 50%;
     box-shadow: 0 0 10px var(--success-glow);
-    /* */
 }
 
 .log-date {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--font-data);
     font-size: 0.8rem;
+    letter-spacing: 0.05em;
     color: var(--nebula-blue);
-    /* */
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
@@ -642,33 +694,27 @@ footer {
     color: #ffffff;
 }
 
-
 /* =========================================
-   17. Contact Form (Balanced Dark Theme)
+   17. Contact Form
    ========================================= */
 .contact-card {
     background: var(--hull-gray);
-    /* Matches project cards */
     padding: 40px;
     border-radius: 8px;
     border: 1px solid var(--slate-gray);
     max-width: 600px;
-    /* Limits width to keep it centered and professional */
     margin: 40px auto;
-    /* Centers the form on the page */
 }
 
 .form-group {
     margin-bottom: 25px;
     display: flex;
     flex-direction: column;
-    /* Stacks label on top of input */
     align-items: flex-start;
 }
 
 .form-group label {
     color: var(--nebula-blue);
-    /* Consistent blue labels */
     font-size: 0.9rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -678,30 +724,24 @@ footer {
 .form-group input,
 .form-group textarea {
     width: 100%;
-    /* Spans full width of the card for balance */
     padding: 12px;
     background-color: var(--deep-space) !important;
-    /* Removes white background */
     border: 1px solid #333;
     border-radius: 4px;
     color: var(--text-main);
     font-family: inherit;
     box-sizing: border-box;
-    /* Prevents overflow */
 }
 
-/* Focused state for high-tech feedback */
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--nebula-blue);
     box-shadow: 0 0 10px var(--success-glow);
-    /* Adds that signature glow */
 }
 
 .contact-card button {
     width: 100%;
-    /* Makes the button as wide as the inputs for symmetry */
     margin-top: 10px;
     cursor: pointer;
 }
@@ -742,7 +782,6 @@ footer {
     align-items: center !important;
     min-height: 100vh !important;
     max-width: none !important;
-    /* Breaks out of the 900px body limit */
     margin: 0 !important;
     padding: 0 !important;
     width: 100% !important;
@@ -758,7 +797,6 @@ footer {
     position: relative;
 }
 
-/* Creating CSS-only stars */
 .starfield::after {
     content: "";
     position: absolute;
@@ -767,11 +805,7 @@ footer {
     width: 2px;
     height: 2px;
     background: white;
-    /* This creates 50+ "stars" using box-shadows */
-    box-shadow:
-        15vw 10vh #fff, 35vw 45vh #fff, 85vw 25vh #fff,
-        10vw 80vh #fff, 50vw 20vh #fff, 70vw 60vh #fff,
-        90vw 90vh #fff, 25vw 30vh #fff, 5vw 50vh #fff;
+    box-shadow: 15vw 10vh #fff, 35vw 45vh #fff, 85vw 25vh #fff, 10vw 80vh #fff, 50vw 20vh #fff, 70vw 60vh #fff, 90vw 90vh #fff, 25vw 30vh #fff, 5vw 50vh #fff;
     opacity: 0.5;
     animation: twinkle 5s infinite ease-in-out;
 }
@@ -786,159 +820,4 @@ footer {
     50% {
         opacity: 0.8;
     }
-}
-
-
-/* =========================================
-   3. Final Consolidated Navigation Logic
-   ========================================= */
-
-/* Main Navigation Container */
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
-    gap: 60px;
-    /* Horizontal spacing between items */
-    align-items: center;
-    /* Forces all primary links onto the same baseline */
-    flex-wrap: wrap;
-}
-
-/* Base style for all primary navigation links */
-nav a,
-.drop-btn {
-    text-decoration: none;
-    color: var(--nebula-blue);
-    /* Default blue */
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    transition: color 0.3s ease;
-    position: relative;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    font-family: inherit;
-}
-
-/* -----------------------------------------
-   Unified Dropdown Logic (Home & Other)
-   ----------------------------------------- */
-
-.nav-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.drop-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--hull-gray);
-    /* Matches project cards */
-    min-width: 140px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    padding: 15px 0;
-    margin-top: 10px;
-    border: 1px solid var(--slate-gray);
-    /* Dark slate border */
-    border-radius: 4px;
-    list-style: none;
-
-    /* Smooth Transition Logic */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-}
-
-/* Reveal menu on hover */
-.nav-dropdown:hover .drop-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.drop-menu li {
-    padding: 5px 20px;
-}
-
-/* Dropdown link styling */
-.drop-menu a {
-    font-size: 0.8rem;
-    display: block;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/* -----------------------------------------
-   Underline & Color Effects
-   ----------------------------------------- */
-
-/* Primary Underline animation */
-nav>ul>li>a::after,
-.drop-btn::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--nebula-blue);
-    transition: width 0.3s ease;
-}
-
-nav>ul>li>a:hover::after,
-.nav-dropdown:hover .drop-btn::after {
-    width: 100%;
-}
-
-nav a:hover,
-.drop-btn:hover {
-    color: #ffffff;
-}
-
-/* Persistent Colors for Specialized Links */
-nav a.nav-creative {
-    color: #FF4500 !important;
-}
-
-/* Swiss Orange */
-nav a.nav-verify {
-    color: #FFB300 !important;
-}
-
-/* Amber */
-
-/* Hover state within dropdown items */
-.drop-menu a:hover {
-    color: #ffffff !important;
-}
-
-/* -----------------------------------------
-   Resume Button Styling
-   ----------------------------------------- */
-.nav-resume-btn {
-    border: 1px solid var(--nebula-blue);
-    /* */
-    padding: 6px 16px;
-    border-radius: 4px;
-    font-size: 0.75rem !important;
-}
-
-.nav-resume-btn:hover {
-    background: var(--nebula-blue);
-    color: var(--deep-space) !important;
-}
-
-.nav-resume-btn::after {
-    display: none !important;
-    /* No underline for button style */
 }
