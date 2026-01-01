@@ -1,124 +1,153 @@
-/* 1. CORE VARIABLES & RESET */
 :root {
-    --ink-black: #000000;
-    --paper-white: #ffffff;
-    --swiss-orange: #FF4500;   /* Anomaly/Failure */
-    --mission-green: #28A745;  /* Success */
-    --pending-gray: #888888;   /* TBD/Future */
-    --grid-gap: 40px;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    /* NASA Palette */
+    --nasa-red: #FC3D21;
+    --nasa-blue: #0B3D91;
+    --paper-white: #FFFFFF;
+    --tech-gray: #E0E0E0;
+    --deep-black: #1A1A1B;
+    
+    /* Typography */
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 }
 
 body {
     background-color: var(--paper-white);
-    color: var(--ink-black);
-    font-family: 'Helvetica', 'Arial', sans-serif; /* Professional Sans-Serif */
+    color: var(--deep-black);
+    font-family: var(--font-main);
     line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 40px; /* Gives it that 'printed manual' margin */
 }
 
-/* 2. THE EDITORIAL GRID (The Margin Fix) */
-.editorial-grid {
+/* Technical Headers */
+h1, h2, h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--deep-black);
+    padding-bottom: 8px;
+    margin-top: 2em;
+}
+
+h1 { font-weight: 900; font-size: 2.5rem; }
+h2 { font-weight: 700; border-bottom-width: 1px; }
+
+/* The "Worm" Style accent */
+.accent-red { color: var(--nasa-red); }
+
+.project-library {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 80px 40px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
 }
 
-/* 3. SUBSYSTEM BLOCKS (The Mission Modules) */
-.subsystem-block {
-    grid-column: span 12;
-    border-top: 2px solid black;
-    margin-bottom: 80px;
+.report-card {
+    border: 1px solid var(--deep-black);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
 }
 
-/* Uniform Header for every Mission */
-.block-label {
-    background: black;
+.card-header {
+    background: var(--deep-black);
     color: white;
-    display: inline-block;
-    padding: 8px 20px;
-    font-size: 0.75rem;
-    font-family: monospace;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/* 4. INTERNAL GRID CONTENT */
-.grid-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* Narrative (Left) vs Checklist (Right) */
-    gap: 60px;
-    margin-top: 40px;
-}
-
-.data-readout {
-    padding: 30px;
-    border-right: 1px solid var(--ink-black);
-}
-
-.tech-log {
-    padding: 30px;
-    background-color: #fcfcfc;
-}
-
-/* 5. DYNAMIC STATUS STYLING */
-.status-nominal .block-label { background: #28A745; }
-.status-alert .block-label { background: #FF4500; }
-.status-tbd .block-label { background: #ccc; }
-
-.status-nominal { border-color: var(--mission-green); }
-.status-alert { border-color: var(--swiss-orange); }
-.status-tbd { border-color: var(--pending-gray); opacity: 0.6; }
-
-/* 6. TYPOGRAPHY & DATA DATA */
-.meta-label {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.75rem;
-    color: #666;
-    margin-bottom: 8px;
-    display: block;
-}
-
-h3 {
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-}
-
-.log-entry {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.85rem;
+    padding: 8px 15px;
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px dotted #ccc;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
 }
 
-.key { font-weight: bold; }
+.status-badge {
+    color: var(--nasa-red);
+    font-weight: bold;
+}
 
-/* 7. THE BUTTON */
-.base-link {
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    margin: 0 0 10px 0;
+    border: none;
+    font-size: 1.25rem;
+}
+
+.tech-specs {
+    margin-top: 15px;
+    padding: 10px;
+    background: var(--tech-gray);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.card-footer {
+    padding: 15px 20px;
+    border-top: 1px solid var(--tech-gray);
+}
+
+.btn-manual {
     display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    border: 1px solid var(--ink-black);
+    color: var(--deep-black);
     text-decoration: none;
-    color: var(--ink-black);
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 2px solid var(--deep-black);
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.btn-manual:hover {
+    background-color: var(--nasa-red);
+    color: white;
+    border-color: var(--nasa-red);
+}
+
+/* Header Styling */
+header {
+    margin-bottom: 50px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
     font-size: 0.8rem;
     font-weight: bold;
-    text-transform: uppercase;
-    transition: 0.2s;
 }
 
-.base-link:hover {
-    background: var(--ink-black);
-    color: var(--paper-white);
+.subtitle {
+    font-style: italic;
+    color: #555;
+    margin-top: -10px;
+}
+
+/* Status Colors */
+.status-passed { color: #2ecc71; } /* Green for success */
+.status-ongoing { color: #f39c12; } /* Orange for in-progress */
+
+.validation-status {
+    margin: 10px 0;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+}
+
+.status-text {
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* Footer Styling */
+footer {
+    margin-top: 100px;
+    padding-top: 20px;
+    border-top: 4px double var(--deep-black);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-align: center;
 }

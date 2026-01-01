@@ -1,260 +1,81 @@
 <!DOCTYPE html>
-<html lang="en-US">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>NASA_STANDARDS // V&V_LOG // KWANYOUNG PARK</title>
-    <style>
-        /* 1. THE FOUNDATION: RESET & FONTS */
-        :root {
-            --ink-black: #000000;
-            --paper-white: #ffffff;
-            --nasa-red: #FC3D21;
-            --nominal-green: #28A745;
-            --anomaly-orange: #FF4500;
-            --pending-gray: #ccc;
-        }
-
-        body {
-            background-color: #f0f0f0;
-            /* Gray background to make the 'paper' pop */
-            color: var(--ink-black);
-            font-family: "Helvetica", "Arial", sans-serif;
-            margin: 0;
-            padding: 40px;
-        }
-
-        /* 2. THE PAPER CONTAINER (1200px Fixed) */
-        .technical-document {
-            background: var(--paper-white);
-            max-width: 1200px;
-            margin: 0 auto;
-            border: 1px solid var(--ink-black);
-            min-height: 100vh;
-            padding: 80px;
-            /* This creates the consistent document margins */
-        }
-
-        /* 3. THE NASA HEADER */
-        header {
-            border-bottom: 2px solid var(--ink-black);
-            padding-bottom: 40px;
-            margin-bottom: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            line-height: 0.9;
-            margin: 0;
-        }
-
-        /* 4. MISSION BLOCK STRUCTURE */
-        .mission-module {
-            margin-bottom: 100px;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            /* Narrative on left, Checklist on right */
-            gap: 60px;
-        }
-
-        .project-tab {
-            grid-column: span 2;
-            background: var(--ink-black);
-            color: var(--paper-white);
-            padding: 10px 20px;
-            font-family: monospace;
-            font-weight: bold;
-            font-size: 0.8rem;
-            margin-bottom: 30px;
-        }
-
-        /* 5. DATA STYLING */
-        .status-box {
-            border: 2px solid var(--ink-black);
-            padding: 30px;
-            margin: 20px 0;
-            text-transform: uppercase;
-        }
-
-        .checklist {
-            background: #f9f9f9;
-            padding: 30px;
-            border-left: 1px solid var(--ink-black);
-        }
-
-        .log-entry {
-            font-family: monospace;
-            font-size: 0.85rem;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px dotted #000;
-            padding: 10px 0;
-        }
-
-        /* DYNAMIC STATUS MODIFIERS */
-        .nominal .status-box {
-            border-color: var(--nominal-green);
-            color: var(--nominal-green);
-        }
-
-        .alert .status-box {
-            border-color: var(--anomaly-orange);
-            color: var(--anomaly-orange);
-        }
-
-        .tbd {
-            opacity: 0.4;
-        }
-
-        .meta {
-            font-family: monospace;
-            font-size: 0.75rem;
-            color: #666;
-        }
-
-        .base-link {
-            display: inline-block;
-            margin-top: 20px;
-            font-weight: bold;
-            text-decoration: underline;
-            color: var(--ink-black);
-        }
-    </style>
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: true,
-                processEnvironments: true
-            },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-            }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering V&V Archive | Systems Portfolio</title>
+    <link rel="stylesheet" href="css/verify.css">
 </head>
-
 <body>
 
-    <div class="technical-document">
+    <header>
+        <div class="header-top">
+            <span class="agency-brand">MISSION ASSURANCE // <span class="accent-red">V&V DIVISION</span></span>
+            <span class="date-stamp">REF: JAN 2026</span>
+        </div>
+        <h1>Project Verification & Validation Archive</h1>
+        <p class="subtitle">Technical documentation and requirements traceability for astronautical engineering systems.</p>
+    </header>
 
-        <header>
-            <div>
-                <span class="meta" style="color: var(--nasa-red); font-weight: bold;">STANDARDS_MANUAL // NASA_01</span>
-                <h1>Compliance<br>Ledger</h1>
+    <main class="project-library">
+        
+        <article class="report-card">
+            <div class="card-header">
+                <span class="serial-number">ID: AR-N-BODY-01</span>
+                <span class="status-badge status-passed">VERIFICATION: PASSED</span>
             </div>
-            <div style="text-align: right;">
-                <span class="meta">KWANYOUNG PARK</span><br>
-                <span class="meta">2025 // USC_ASTE</span>
-            </div>
-        </header>
-
-        <section class="mission-module nominal">
-            <div class="project-tab">01 // PROJECT_VECTOR // GNC_STABILITY</div>
-
-            <div class="narrative">
-                <span class="meta">REQ_ID: GNC-01</span>
-                <div class="status-box">
-                    <h3>STATUS: NOMINAL</h3>
+            
+            <div class="card-content">
+                <h3>N-Body Orbital Simulation</h3>
+                <p>High-fidelity simulation of gravitational interactions using Runge-Kutta 4th Order integration. Validated against Apollo 11 lunar trajectory data.</p>
+                
+                <div class="validation-status">
+                    <strong>VALIDATION:</strong> <span class="status-text">COMPLETED (FLIGHT DATA COMPARE)</span>
                 </div>
-                <p>Verified 9-DOF fusion stack with < 2.5% yaw drift. Validated body-to-inertial rotation.</p>
-                        <a href="assets/pdf/ASTE101_Project2_Team3.pdf" class="base-link">VIEW_DOSSIER (PDF)</a>
-            </div>
 
-            <div class="checklist">
-                <div class="meta" style="margin-bottom: 20px;">VERIFICATION_MATRIX</div>
-                <div class="log-entry"><span>MATH_VALIDATION</span> <span>[✓]</span></div>
-                <div class="log-entry"><span>HARDWARE_TEST</span> <span>[✓]</span></div>
-                <div class="log-entry"><span>DATA_REVIEW</span> <span>[✓]</span></div>
-            </div>
-        </section>
-
-        <section class="mission-module alert">
-            <div class="project-tab" style="background: var(--anomaly-orange);">02 // PROPULSION // IGNITION_ANOMALY
-            </div>
-
-            <div class="narrative">
-                <span class="meta">REQ_ID: PROP-01</span>
-                <div class="status-box">
-                    <h3>ANOMALY_REPORTED</h3>
-                </div>
-                <p>E-match failure at 27V initiation. Manual powder train bypass successful.</p>
-                <a href="assets/pdf/Kwanyoung_Park_Resume.pdf" class="base-link"
-                    style="color: var(--anomaly-orange);">ANOMALY_LOG (PDF)</a>
-            </div>
-
-            <div class="checklist" style="border-left-color: var(--anomaly-orange);">
-                <div class="meta" style="margin-bottom: 20px;">FAILURE_ANALYSIS</div>
-                <div class="log-entry"><span>PULSE_DETECTION</span> <span>[X]</span></div>
-                <div class="log-entry"><span>THERMAL_TRANS</span> <span>[X]</span></div>
-                <div class="log-entry"><span>FIELD_MITIG</span> <span>[✓]</span></div>
-            </div>
-        </section>
-
-        <section class="mission-module alert">
-            <div class="project-tab">02 // NOZZLE_RESEARCH // PERFORMANCE_VALIDATION</div>
-
-            <div class="narrative">
-                <span class="meta">REQ_ID: PROP-NOZ-01</span>
-                <div class="status-box">
-                    <h3>STATUS: RESEARCH_ANOMALY</h3>
-                </div>
-                <p>
-                    Objective: Validate $I_{sp}$ gains from varying nozzle entrance angles in KNSB solid motors.
-                    Research identified that <strong>cement-nozzle erosion</strong> significantly altered throat area
-                    ($A_t$)
-                    during high-enthalpy phases, deviating from CAD-predicted expansion ratios.
-                </p>
-                <p><strong>MITIGATION:</strong> Implemented Savitzky-Golay filtering in Python to post-process
-                    noisy load-cell telemetry and recover peak thrust trends.</p>
-                <a href="assets/pdf/Rocket Angle and its Thrust.pdf" class="base-link">VIEW_RESEARCH_DOSSIER (PDF)</a>
-            </div>
-
-            <div class="checklist">
-                <div class="meta" style="margin-bottom: 20px;">RESEARCH_VERIFICATION</div>
-                <div class="log-entry"><span>THERMO_MODELING</span> <span>[✓]</span></div>
-                <div class="log-entry"><span>THROAT_INTEGRITY</span> <span>[X]</span></div>
-                <div class="log-entry"><span>DATA_SMOOTHING</span> <span>[✓]</span></div>
-
-                <div style="margin-top: 20px; font-size: 0.7rem; font-family: monospace;">
-                    <div style="background: #eee; padding: 5px;">MEASURED_PERFORMANCE</div>
-                    <div style="display: flex; justify-content: space-between; padding: 5px 0;">
-                        <span>PEAK_THRUST:</span> <span>12.4 N</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 5px 0;">
-                        <span>SPECIFIC_IMPULSE:</span> <span>110.5 s</span>
-                    </div>
+                <div class="tech-specs">
+                    <code>LANG: Python | ENV: NumPy, Matplotlib</code>
                 </div>
             </div>
-        </section>
 
-        <section class="mission-module tbd">
-            <div class="project-tab" style="background: #ccc;">03 // TVC_GIMBAL // ACTIVE_CONTROL</div>
+            <div class="card-footer">
+                <a href="report-viewer.html?file=MISSION_01_VECTOR.pdf" class="btn-manual">
+                    ACCESS FULL TECHNICAL V&V REPORT (PDF) <span class="icon">→</span>
+                </a>
+            </div>
+        </article>
 
-            <div class="narrative">
-                <span class="meta">REQ_ID: TVC-01</span>
-                <div class="status-box">
-                    <h3>INITIALIZING / TBD</h3>
+        <article class="report-card">
+            <div class="card-header">
+                <span class="serial-number">ID: AR-ADCS-02</span>
+                <span class="status-badge status-ongoing">VERIFICATION: ONGOING</span>
+            </div>
+            
+            <div class="card-content">
+                <h3>CubeSat ADCS Controller</h3>
+                <p>Attitude Determination and Control System utilizing B-Dot logic for detumbling. Current phase: Hardware-in-the-Loop (HIL) testing.</p>
+                
+                <div class="validation-status">
+                    <strong>VALIDATION:</strong> <span class="status-text">ONGOING (SITL PHASE)</span>
                 </div>
-                <p>Development of PID-controlled gimbal system for vertical ascent stabilization.</p>
+
+                <div class="tech-specs">
+                    <code>LANG: C++, MATLAB/Simulink | HARDWARE: Raspberry Pi</code>
+                </div>
             </div>
 
-            <div class="checklist" style="border-left-color: #ccc;">
-                <div class="meta" style="margin-bottom: 20px;">PENDING_TASKS</div>
-                <div class="log-entry"><span>PID_TUNING</span> <span>[ ]</span></div>
-                <div class="log-entry"><span>SERVO_TORQUE</span> <span>[ ]</span></div>
+            <div class="card-footer">
+                <a href="report-viewer.html?file=adcs_report.pdf" class="btn-manual">
+                    ACCESS FULL TECHNICAL V&V REPORT (PDF) <span class="icon">→</span>
+                </a>
             </div>
-        </section>
+        </article>
 
-    </div>
+    </main>
+
+    <footer>
+        <p>DOCUMENT CLASSIFICATION: UNRESTRICTED // TECHNICAL PORTFOLIO BY [YOUR NAME]</p>
+    </footer>
 
 </body>
-
 </html>
