@@ -164,16 +164,21 @@ nav a:hover {
    4. Hero Section (Home Page)
    ========================================= */
 .hero-container {
-    display: flex;             /* Establishes the side-by-side layout */
-    align-items: flex-start;   /* Aligns the top of the text and image perfectly */
-    gap: 50px;                 /* Creates professional spacing between text and photo */
-    margin-bottom: 80px;       /* Adds space before the next section */
+    display: flex;
+    /* Establishes the side-by-side layout */
+    align-items: flex-start;
+    /* Aligns the top of the text and image perfectly */
+    gap: 50px;
+    /* Creates professional spacing between text and photo */
+    margin-bottom: 80px;
+    /* Adds space before the next section */
     border-bottom: 1px solid var(--slate-gray);
     padding-bottom: 40px;
 }
 
 #about {
-    flex: 1;                   /* Allows the text section to take up the remaining space */
+    flex: 1;
+    /* Allows the text section to take up the remaining space */
 }
 
 .profile-photo {
@@ -181,14 +186,15 @@ nav a:hover {
     width: 280px;
     height: auto;
     border-radius: 8px;
-    
+
     /* MANUALLY MOVE DOWN: Adjust the 40px value until it lines up perfectly with your text */
-    margin-top: 65px; 
-    
+    margin-top: 65px;
+
     /* Alternative method if margin doesn't work: */
     /* transform: translateY(45px); */
-       /* Maintains your clean aesthetic */
-    border: 1px solid var(--ink-black); /* Optional: adds a technical border */
+    /* Maintains your clean aesthetic */
+    border: 1px solid var(--ink-black);
+    /* Optional: adds a technical border */
 }
 
 /* =========================================
@@ -559,7 +565,7 @@ footer {
    15. Unified Education Logo Styling
    ========================================= */
 /* Target both the SVG (vector) and JPEG (raster) logos with the same rules */
-.edu-logo-vector, 
+.edu-logo-vector,
 .edu-logo-raster {
     width: 45px !important;
     height: 45px !important;
@@ -567,12 +573,13 @@ footer {
     max-width: 45px;
     object-fit: contain;
     flex-shrink: 0;
-    background-color: #ffffff; 
+    background-color: #ffffff;
     border-radius: 4px;
     padding: 4px;
     display: block;
-    box-sizing: border-box; /* 🟢 Prevents padding from making JPEGs look bigger */
-    
+    box-sizing: border-box;
+    /* 🟢 Prevents padding from making JPEGs look bigger */
+
     /* 🟢 Keeps the Goyang-si school JPEGs sharp and clear */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
@@ -590,7 +597,8 @@ footer {
    16. Current Mission Log Styling
    ========================================= */
 .log-container {
-    border-left: 1px solid #333; /* Matches your sub-nav style */
+    border-left: 1px solid #333;
+    /* Matches your sub-nav style */
     padding-left: 20px;
     margin-left: 10px;
 }
@@ -608,15 +616,18 @@ footer {
     top: 8px;
     width: 8px;
     height: 8px;
-    background-color: var(--nebula-blue); /* */
+    background-color: var(--nebula-blue);
+    /* */
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--success-glow); /* */
+    box-shadow: 0 0 10px var(--success-glow);
+    /* */
 }
 
 .log-date {
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.8rem;
-    color: var(--nebula-blue); /* */
+    color: var(--nebula-blue);
+    /* */
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
@@ -636,51 +647,61 @@ footer {
    17. Contact Form (Balanced Dark Theme)
    ========================================= */
 .contact-card {
-    background: var(--hull-gray); /* Matches project cards */
+    background: var(--hull-gray);
+    /* Matches project cards */
     padding: 40px;
     border-radius: 8px;
     border: 1px solid var(--slate-gray);
-    max-width: 600px; /* Limits width to keep it centered and professional */
-    margin: 40px auto; /* Centers the form on the page */
+    max-width: 600px;
+    /* Limits width to keep it centered and professional */
+    margin: 40px auto;
+    /* Centers the form on the page */
 }
 
 .form-group {
     margin-bottom: 25px;
     display: flex;
-    flex-direction: column; /* Stacks label on top of input */
+    flex-direction: column;
+    /* Stacks label on top of input */
     align-items: flex-start;
 }
 
 .form-group label {
-    color: var(--nebula-blue); /* Consistent blue labels */
+    color: var(--nebula-blue);
+    /* Consistent blue labels */
     font-size: 0.9rem;
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 8px;
 }
 
-.form-group input, 
+.form-group input,
 .form-group textarea {
-    width: 100%; /* Spans full width of the card for balance */
+    width: 100%;
+    /* Spans full width of the card for balance */
     padding: 12px;
-    background-color: var(--deep-space) !important; /* Removes white background */
+    background-color: var(--deep-space) !important;
+    /* Removes white background */
     border: 1px solid #333;
     border-radius: 4px;
     color: var(--text-main);
     font-family: inherit;
-    box-sizing: border-box; /* Prevents overflow */
+    box-sizing: border-box;
+    /* Prevents overflow */
 }
 
 /* Focused state for high-tech feedback */
-.form-group input:focus, 
+.form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--nebula-blue);
-    box-shadow: 0 0 10px var(--success-glow); /* Adds that signature glow */
+    box-shadow: 0 0 10px var(--success-glow);
+    /* Adds that signature glow */
 }
 
 .contact-card button {
-    width: 100%; /* Makes the button as wide as the inputs for symmetry */
+    width: 100%;
+    /* Makes the button as wide as the inputs for symmetry */
     margin-top: 10px;
     cursor: pointer;
 }
@@ -699,10 +720,12 @@ footer {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(77, 184, 255, 0.7);
     }
+
     70% {
         transform: scale(1);
         box-shadow: 0 0 0 20px rgba(77, 184, 255, 0);
     }
+
     100% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(77, 184, 255, 0);
@@ -718,7 +741,8 @@ footer {
     justify-content: center !important;
     align-items: center !important;
     min-height: 100vh !important;
-    max-width: none !important; /* Breaks out of the 900px body limit */
+    max-width: none !important;
+    /* Breaks out of the 900px body limit */
     margin: 0 !important;
     padding: 0 !important;
     width: 100% !important;
@@ -744,35 +768,177 @@ footer {
     height: 2px;
     background: white;
     /* This creates 50+ "stars" using box-shadows */
-    box-shadow: 
-        15vw 10vh #fff, 35vw 45vh #fff, 85vw 25vh #fff, 
-        10vw 80vh #fff, 50vw 20vh #fff, 70vw 60vh #fff, 
+    box-shadow:
+        15vw 10vh #fff, 35vw 45vh #fff, 85vw 25vh #fff,
+        10vw 80vh #fff, 50vw 20vh #fff, 70vw 60vh #fff,
         90vw 90vh #fff, 25vw 30vh #fff, 5vw 50vh #fff;
     opacity: 0.5;
     animation: twinkle 5s infinite ease-in-out;
 }
 
 @keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
 }
 
 
 /* =========================================
-   Creative Link Customization
+   3. Final Consolidated Navigation Logic
    ========================================= */
 
-/* 1. Set the default color to your Swiss Orange */
-nav > ul > li > a.nav-creative {
-    color: #FF4500;
+/* Main Navigation Container */
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    gap: 60px;
+    /* Horizontal spacing between items */
+    align-items: center;
+    /* Forces all primary links onto the same baseline */
+    flex-wrap: wrap;
 }
 
-/* 2. Fix the Underline: Override the blue with orange */
-nav > ul > li > a.nav-creative::after {
-    background-color: #FF4500;
+/* Base style for all primary navigation links */
+nav a,
+.drop-btn {
+    text-decoration: none;
+    color: var(--nebula-blue);
+    /* Default blue */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
 }
 
-/* 3. Restore the Special Effect: Ensure it turns white on hover like others */
-nav > ul > li > a.nav-creative:hover {
+/* -----------------------------------------
+   Unified Dropdown Logic (Home & Other)
+   ----------------------------------------- */
+
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.drop-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--hull-gray);
+    /* Matches project cards */
+    min-width: 140px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding: 15px 0;
+    margin-top: 10px;
+    border: 1px solid var(--slate-gray);
+    /* Dark slate border */
+    border-radius: 4px;
+    list-style: none;
+
+    /* Smooth Transition Logic */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Reveal menu on hover */
+.nav-dropdown:hover .drop-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.drop-menu li {
+    padding: 5px 20px;
+}
+
+/* Dropdown link styling */
+.drop-menu a {
+    font-size: 0.8rem;
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* -----------------------------------------
+   Underline & Color Effects
+   ----------------------------------------- */
+
+/* Primary Underline animation */
+nav>ul>li>a::after,
+.drop-btn::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--nebula-blue);
+    transition: width 0.3s ease;
+}
+
+nav>ul>li>a:hover::after,
+.nav-dropdown:hover .drop-btn::after {
+    width: 100%;
+}
+
+nav a:hover,
+.drop-btn:hover {
     color: #ffffff;
+}
+
+/* Persistent Colors for Specialized Links */
+nav a.nav-creative {
+    color: #FF4500 !important;
+}
+
+/* Swiss Orange */
+nav a.nav-verify {
+    color: #FFB300 !important;
+}
+
+/* Amber */
+
+/* Hover state within dropdown items */
+.drop-menu a:hover {
+    color: #ffffff !important;
+}
+
+/* -----------------------------------------
+   Resume Button Styling
+   ----------------------------------------- */
+.nav-resume-btn {
+    border: 1px solid var(--nebula-blue);
+    /* */
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 0.75rem !important;
+}
+
+.nav-resume-btn:hover {
+    background: var(--nebula-blue);
+    color: var(--deep-space) !important;
+}
+
+.nav-resume-btn::after {
+    display: none !important;
+    /* No underline for button style */
 }
