@@ -86,7 +86,12 @@ a:hover {
   padding: 60px 40px;
 }
 
-/* Navigation Menu */
+/* ==========================================================================
+   NAVIGATION MENU + DROPDOWN (COMPLETE & FIXED)
+   - Home + Other buttons now 100% identical in appearance
+   - Dropdowns fully working (hover works on both)
+   - Special hover colors for V&V and Signals
+   ========================================================================== */
 nav {
   background-color: var(--text-main);
   padding: 15px 0;
@@ -97,68 +102,93 @@ nav ul {
   display: flex;
   justify-content: center;
   gap: 30px;
+  align-items: center; /* ensures vertical alignment */
 }
 
-nav a {
+/* Base styles for ALL top-level nav links (including the span for "Other") */
+nav a,
+.drop-btn {
   color: #FFFFFF;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  display: inline-block; /* makes the span behave exactly like the <a> tags */
 }
 
-nav a:hover {
+/* Hover for top-level buttons (Home + Other) */
+nav a:hover,
+.drop-btn:hover {
   color: var(--accent-red);
 }
 
-/* ==========================================================================
-   DROPDOWN NAVIGATION (header)
-   ========================================================================== */
+/* Dropdown container */
 .nav-dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
+/* Dropdown menu */
 .drop-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--text-main);
-    min-width: 220px;
-    box-shadow: 0 10px 20px rgba(10, 17, 40, 0.3);
-    z-index: 1000;
-    padding: 12px 0;
-    margin-top: 4px;
-    list-style: none;
-    border: 1px solid rgba(255,255,255,0.1);
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--text-main);
+  min-width: 220px;
+  box-shadow: 0 10px 20px rgba(10, 17, 40, 0.3);
+  z-index: 1000;
+  padding: 12px 0;
+  margin-top: 4px;
+  list-style: none;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
+/* Show dropdown on hover or focus */
 .nav-dropdown:hover .drop-menu,
 .nav-dropdown:focus-within .drop-menu {
-    display: block;
+  display: block;
 }
 
+/* Sub-menu links */
 .drop-menu li a {
-    display: block;
-    padding: 12px 25px;
-    color: #FFFFFF;
-    text-decoration: none;
-    font-size: 0.95rem;
-    white-space: nowrap;
-    transition: background-color 0.2s ease;
+  display: block;
+  padding: 12px 25px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
 .drop-menu li a:hover {
-    background-color: var(--accent-red);
+  background-color: var(--accent-red);
+  color: #fff;
 }
 
-/* Optional: small down-arrow on dropdown buttons */
+/* SPECIAL HOVER COLORS (as you requested earlier) */
+.drop-menu li a.nav-verify:hover {
+  background-color: #10b981;   /* Teal for V&V */
+  color: #fff;
+}
+
+.drop-menu li a.nav-creative:hover {
+  background-color: #a855f7;   /* Violet for Signals */
+  color: #fff;
+}
+
+/* Down arrow on both dropdown buttons */
 .drop-btn::after {
-    content: " ▼";
-    font-size: 0.75rem;
-    margin-left: 6px;
-    opacity: 0.8;
+  content: " ▼";
+  font-size: 0.7rem;
+  margin-left: 6px;
+  opacity: 0.7;
 }
 
 /* ==========================================================================
@@ -302,4 +332,82 @@ footer a:hover {
     display: block;
     margin-bottom: 1.5rem;
     vertical-align: middle;
+}
+
+/* ==========================================================================
+   PROJECT IMAGE CONTAINERS - fix overflow/crash on proj-nozzle.html etc.
+   ========================================================================== */
+img,
+.project-img,
+.project-image,
+.image-container img,
+.project-image-container img {
+    max-width: 100% !important;
+    height: auto;
+    display: block;
+    margin: 2rem 0;
+    border-radius: 0;               /* keeps your sharp professional look */
+    box-shadow: 0 4px 12px rgba(10, 17, 40, 0.08);
+}
+
+/* Optional: extra breathing room for image captions or galleries */
+.image-container,
+.project-image-container {
+    margin-bottom: 3rem;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+
+/* ==========================================================================
+   ENGINEERING GALLERY (proj-nozzle.html + similar project pages)
+   Instagram-like feed: responsive grid, images + text underneath, no clicks needed
+   ========================================================================== */
+/* ==========================================================================
+   ENGINEERING GALLERY (proj-nozzle.html + similar project pages)
+   Updated: caption text color — more noticeable, professional, clean
+   ========================================================================== */
+.engineering-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.grid-item {
+    background-color: var(--bg-secondary);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 1.25rem;
+    border-radius: 0;
+    box-shadow: 0 4px 12px rgba(10, 17, 40, 0.1);
+}
+
+.grid-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(10, 17, 40, 0.18);
+}
+
+/* UPDATED: caption text — brighter, higher contrast, still clean & professional */
+.grid-item .caption {
+    flex: 1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #f1f5f9;           /* lighter neutral — much more noticeable on dark background */
+    font-weight: 400;         /* straightforward, no unnecessary boldness */
+}
+
+.grid-item .caption strong {
+    color: var(--accent-red); /* keeps the red highlight for emphasis */
 }
