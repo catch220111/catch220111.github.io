@@ -83,7 +83,7 @@ a:hover {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 60px 40px;
 }
 
 /* Navigation Menu */
@@ -112,6 +112,56 @@ nav a:hover {
 }
 
 /* ==========================================================================
+   DROPDOWN NAVIGATION (header)
+   ========================================================================== */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.drop-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--text-main);
+    min-width: 220px;
+    box-shadow: 0 10px 20px rgba(10, 17, 40, 0.3);
+    z-index: 1000;
+    padding: 12px 0;
+    margin-top: 4px;
+    list-style: none;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-dropdown:hover .drop-menu,
+.nav-dropdown:focus-within .drop-menu {
+    display: block;
+}
+
+.drop-menu li a {
+    display: block;
+    padding: 12px 25px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.drop-menu li a:hover {
+    background-color: var(--accent-red);
+}
+
+/* Optional: small down-arrow on dropdown buttons */
+.drop-btn::after {
+    content: " ▼";
+    font-size: 0.75rem;
+    margin-left: 6px;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
    4. COMPONENTS (Cards, Buttons, Forms)
    ========================================================================== */
 
@@ -125,6 +175,20 @@ nav a:hover {
   margin-bottom: 20px;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
+
+/* Professional borders + extra breathing room / indent */
+.project-card,
+.log-card {
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    border: 1px solid #E2E8F0;
+    border-radius: 0;
+    border-left: 5px solid var(--accent-blue);
+    margin-bottom: 20px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 4px 12px rgba(10, 17, 40, 0.06);   /* subtle depth */
+}
+
 
 .project-card:hover, .log-card:hover {
   transform: translateX(5px); /* Rigid motion */
@@ -228,4 +292,14 @@ footer a:hover {
 .tactical-icon:hover {
   fill: var(--accent-red); /* Alert Red */
   transform: scale(1.05); /* Slight rigid pop */
+}
+
+
+.edu-logo-vector,
+.edu-logo-raster {
+    width: 160px;           /* Change this number if you want them bigger/smaller */
+    height: auto;
+    display: block;
+    margin-bottom: 1.5rem;
+    vertical-align: middle;
 }
