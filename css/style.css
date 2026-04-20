@@ -87,10 +87,11 @@ a:hover {
 }
 
 /* ==========================================================================
-   NAVIGATION MENU + DROPDOWN (COMPLETE & FIXED)
-   - Home + Other buttons now 100% identical in appearance
-   - Dropdowns fully working (hover works on both)
-   - Special hover colors for V&V and Signals
+   NAVIGATION MENU + DROPDOWN (COMPLETE & FIXED - UNIFORM THICKNESS)
+   - ALL buttons (Home, Education, Experience, Other, Resume) now have EXACTLY
+     the same font weight/thickness
+   - Dropdowns still fully working
+   - Special hover colors kept
    ========================================================================== */
 nav {
   background-color: var(--text-main);
@@ -102,15 +103,18 @@ nav ul {
   display: flex;
   justify-content: center;
   gap: 30px;
-  align-items: center; /* ensures vertical alignment */
+  align-items: center;
 }
 
-/* Base styles for ALL top-level nav links (including the span for "Other") */
+/* BASE STYLES FOR EVERY TOP-LEVEL NAV ITEM */
+/* This forces identical thickness (font-weight) across Home, Education, Experience, Other, and Resume */
 nav a,
-.drop-btn {
+.drop-btn,
+.nav-resume-btn {
   color: #FFFFFF;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
+  font-weight: 500;           /* ← EXPLICIT uniform thickness (medium weight) */
   text-transform: uppercase;
   letter-spacing: 1.5px;
   text-decoration: none;
@@ -119,12 +123,13 @@ nav a,
   padding: 0;
   cursor: pointer;
   transition: color 0.2s ease;
-  display: inline-block; /* makes the span behave exactly like the <a> tags */
+  display: inline-block;
 }
 
-/* Hover for top-level buttons (Home + Other) */
+/* Hover for top-level buttons (same for all) */
 nav a:hover,
-.drop-btn:hover {
+.drop-btn:hover,
+.nav-resume-btn:hover {
   color: var(--accent-red);
 }
 
@@ -172,18 +177,18 @@ nav a:hover,
   color: #fff;
 }
 
-/* SPECIAL HOVER COLORS (as you requested earlier) */
+/* SPECIAL HOVER COLORS (V&V and Signals) */
 .drop-menu li a.nav-verify:hover {
-  background-color: #10b981;   /* Teal for V&V */
+  background-color: #10b981;
   color: #fff;
 }
 
 .drop-menu li a.nav-creative:hover {
-  background-color: #a855f7;   /* Violet for Signals */
+  background-color: #a855f7;
   color: #fff;
 }
 
-/* Down arrow on both dropdown buttons */
+/* Down arrow on dropdown buttons */
 .drop-btn::after {
   content: " ▼";
   font-size: 0.7rem;
